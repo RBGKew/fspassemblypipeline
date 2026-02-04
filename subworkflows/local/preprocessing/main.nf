@@ -4,25 +4,42 @@
 //               https://nf-co.re/join
 // TODO nf-core: A subworkflow SHOULD import at least two modules
 
-include { SAMTOOLS_SORT      } from '../../../modules/nf-core/samtools/sort/main'
-include { SAMTOOLS_INDEX     } from '../../../modules/nf-core/samtools/index/main'
+include { FALCO      } from '../../../modules/nf-core/falco/main'
+include { FASTQC     } from '../../../modules/nf-core/fastqc/main'
+include { FASTP      } from '../../../modules/nf-core/fastp/main'
 
 workflow PREPROCESSING {
 
     take:
-    // TODO nf-core: edit input (take) channels
-    ch_bam // channel: [ val(meta), [ bam ] ]
+
+    ch_samplesheet // channel: [ val(meta), [ reads ] ]
 
     main:
-    // TODO nf-core: substitute modules here for the modules of your subworkflow
 
-    SAMTOOLS_SORT ( ch_bam )
+    ch_versions = channel.empty()
 
-    SAMTOOLS_INDEX ( SAMTOOLS_SORT.out.bam )
+    FASTQC (
+        ch_samplesheet
+    )
+    ch_versions = ch_versions.mix( FASTQC.out.versions )
+
+    // Prepare channel for FASTP
+    ch_samplesheet_fastp = ch_samplesheet.map { meta, reads -> [ meta, reads, [] ] }
+
+    FASTP (
+        ch_samplesheet_fastp,
+        [],
+        [],
+        []
+    )
+    // ch_versions = ch_versions.mix( FASTP.out.versions_fastp )
+
+    FALCO (
+        FASTP.out.reads
+    )
+    ch_versions = ch_versions.mix( FALCO.out.versions )
 
     emit:
-    // TODO nf-core: edit emitted channels
-    bam      = SAMTOOLS_SORT.out.bam           // channel: [ val(meta), [ bam ] ]
-    bai      = SAMTOOLS_INDEX.out.bai          // channel: [ val(meta), [ bai ] ]
-    csi      = SAMTOOLS_INDEX.out.csi          // channel: [ val(meta), [ csi ] ]
+    // Emit module versions
+    versions = ch_versions
 }
