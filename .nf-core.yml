@@ -1,0 +1,21 @@
+repository_type: pipeline
+
+nf_core_version: 3.5.1
+
+lint:
+  files_exist:
+    - conf/igenomes.config
+    - conf/igenomes_ignored.config
+
+template:
+  org: nf-core
+  name: fsptest
+  description: A test repo for the development of the initial FSP pipeline
+  author: Fernando Duarte, Chris Wyatt
+  version: 1.0.0dev
+  force: true
+  outdir: .
+  skip_features:
+    - igenomes
+    - gpu
+  is_nfcore: true
