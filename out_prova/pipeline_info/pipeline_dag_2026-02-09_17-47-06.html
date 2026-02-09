@@ -1,0 +1,143 @@
+<!--
+  ~ Copyright 2013-2024, Seqera Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<pre class="mermaid" style="text-align: center;">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#B6ECE2',
+      'primaryTextColor': '#160F26',
+      'primaryBorderColor': '#065647',
+      'lineColor': '#545555',
+      'clusterBkg': '#BABCBD22',
+      'clusterBorder': '#DDDEDE',
+      'fontFamily': 'arial'
+    }
+  }
+}%%
+flowchart TB
+    subgraph " "
+    v2["Channel.fromList"]
+    v15["discard_trimmed_pass"]
+    v16["save_trimmed_fail"]
+    v17["save_merged"]
+    v33[" "]
+    v43["Channel.of"]
+    v47["Channel.fromPath"]
+    v50["ch_workflow_summary"]
+    v54["ch_methods_description"]
+    v61["replace_names"]
+    v62["sample_names"]
+    end
+    subgraph "NFCORE_FSPTEST [NFCORE_FSPTEST]"
+    subgraph "NFCORE_FSPTEST:FSPTEST [FSPTEST]"
+    subgraph "NFCORE_FSPTEST:FSPTEST:PREPROCESSING [PREPROCESSING]"
+    v10(["FASTQC"])
+    v18(["FASTP"])
+    v25(["FALCO"])
+    v13(( ))
+    v14(( ))
+    end
+    subgraph "NFCORE_FSPTEST:FSPTEST:GENOME_ASSEMBLY [GENOME_ASSEMBLY]"
+    v30(["SEQKIT_STATS"])
+    end
+    v63(["MULTIQC"])
+    v34(( ))
+    v58(( ))
+    v59(( ))
+    v60(( ))
+    v67(( ))
+    end
+    end
+    subgraph " "
+    v11[" "]
+    v12[" "]
+    v19[" "]
+    v20[" "]
+    v21[" "]
+    v22[" "]
+    v23[" "]
+    v24[" "]
+    v26[" "]
+    v27[" "]
+    v29["versions"]
+    v31[" "]
+    v32["seqkit_stats"]
+    v64[" "]
+    v65[" "]
+    v66[" "]
+    v69[" "]
+    end
+    subgraph "PIPELINE_INITIALISATION [PIPELINE_INITIALISATION]"
+    v3(( ))
+    end
+    subgraph "PIPELINE_COMPLETION [PIPELINE_COMPLETION]"
+    v68(( ))
+    end
+    v2 --> v3
+    v3 --> v10
+    v10 --> v12
+    v10 --> v11
+    v10 --> v13
+    v15 --> v18
+    v16 --> v18
+    v17 --> v18
+    v14 --> v18
+    v18 --> v25
+    v18 --> v24
+    v18 --> v23
+    v18 --> v22
+    v18 --> v21
+    v18 --> v20
+    v18 --> v19
+    v18 --> v30
+    v25 --> v27
+    v25 --> v26
+    v25 --> v13
+    v13 --> v29
+    v30 --> v32
+    v30 --> v31
+    v33 --> v34
+    v43 --> v34
+    v47 --> v58
+    v50 --> v34
+    v54 --> v34
+    v61 --> v63
+    v62 --> v63
+    v34 --> v63
+    v58 --> v63
+    v59 --> v63
+    v60 --> v63
+    v63 --> v66
+    v63 --> v65
+    v63 --> v64
+    v63 --> v67
+    v68 --> v69
+    v3 --> v14
+    v67 --> v68
+
+</pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, maxTextSize: Number.MAX_SAFE_INTEGER, maxEdges: Number.MAX_SAFE_INTEGER });
+</script>
+</body>
+</html>

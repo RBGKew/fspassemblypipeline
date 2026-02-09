@@ -9,7 +9,13 @@ Initial release of nf-core/fsptest, created with the [nf-core](https://nf-co.re/
 
 ### `Added`
 
+Initialised GENOME_ASSEMBLY subworkflow.
+
+Added seqkit stats module.
+
 ### `Fixed`
+
+Commented out ch_versions in fsptest.nf, as it was causing the failure of the test.
 
 ### `Dependencies`
 

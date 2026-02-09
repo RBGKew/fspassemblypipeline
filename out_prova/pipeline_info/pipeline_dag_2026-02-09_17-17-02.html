@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright 2013-2024, Seqera Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<pre class="mermaid" style="text-align: center;">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#B6ECE2',
+      'primaryTextColor': '#160F26',
+      'primaryBorderColor': '#065647',
+      'lineColor': '#545555',
+      'clusterBkg': '#BABCBD22',
+      'clusterBorder': '#DDDEDE',
+      'fontFamily': 'arial'
+    }
+  }
+}%%
+flowchart TB
+    subgraph " "
+    v2["Channel.fromList"]
+    v16["discard_trimmed_pass"]
+    v17["save_trimmed_fail"]
+    v18["save_merged"]
+    end
+    subgraph "NFCORE_FSPTEST [NFCORE_FSPTEST]"
+    subgraph "NFCORE_FSPTEST:FSPTEST [FSPTEST]"
+    subgraph "NFCORE_FSPTEST:FSPTEST:PREPROCESSING [PREPROCESSING]"
+    v11(["FASTQC"])
+    v19(["FASTP"])
+    v26(["FALCO"])
+    v14(( ))
+    v15(( ))
+    end
+    v30(( ))
+    end
+    end
+    subgraph " "
+    v12[" "]
+    v13[" "]
+    v20[" "]
+    v21[" "]
+    v22[" "]
+    v23[" "]
+    v24[" "]
+    v25[" "]
+    v27[" "]
+    v28[" "]
+    v31["ch_versions"]
+    end
+    subgraph "PIPELINE_INITIALISATION [PIPELINE_INITIALISATION]"
+    v3(( ))
+    end
+    v2 --> v3
+    v3 --> v11
+    v11 --> v13
+    v11 --> v12
+    v11 --> v14
+    v16 --> v19
+    v17 --> v19
+    v18 --> v19
+    v15 --> v19
+    v19 --> v26
+    v19 --> v25
+    v19 --> v24
+    v19 --> v23
+    v19 --> v22
+    v19 --> v21
+    v19 --> v20
+    v26 --> v28
+    v26 --> v27
+    v26 --> v14
+    v30 --> v31
+    v3 --> v15
+    v14 --> v30
+
+</pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, maxTextSize: Number.MAX_SAFE_INTEGER, maxEdges: Number.MAX_SAFE_INTEGER });
+</script>
+</body>
+</html>

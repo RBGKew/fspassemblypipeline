@@ -1,0 +1,10 @@
+PASS	Basic Statistics	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+FAIL	Per base sequence quality	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+PASS	Per sequence quality scores	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+FAIL	Per base sequence content	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+FAIL	Per sequence GC content	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+PASS	Per base N content	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+WARN	Sequence Length Distribution	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+FAIL	Sequence Duplication Levels	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+FAIL	Overrepresented sequences	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
+PASS	Adapter Content	SAMPLE_FSP_PAIRED_END_R1.fastp.fastq.gz
