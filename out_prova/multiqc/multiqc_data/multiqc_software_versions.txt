@@ -1,4 +1,0 @@
-Sample	fastp	seqkit	nf-core/fsptest	Nextflow
-FASTP	1.0.1			
-SEQKIT_STATS		2.9.0		
-Workflow			v1.0.0dev	25.10.2

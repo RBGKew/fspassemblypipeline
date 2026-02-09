@@ -1,7 +1,0 @@
-FASTP:
-  fastp: 1.0.1
-SEQKIT_STATS:
-  seqkit: 2.9.0
-Workflow:
-    nf-core/fsptest: v1.0.0dev
-    Nextflow: 25.10.2
