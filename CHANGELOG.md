@@ -9,13 +9,16 @@ Initial release of nf-core/fsptest, created with the [nf-core](https://nf-co.re/
 
 ### `Added`
 
-Initialised GENOME_ASSEMBLY subworkflow.
-
-Added seqkit stats module.
+09/02/2026 - Initialised GENOME_ASSEMBLY subworkflow.
+09/02/2026 - Added SEQKIT_STATS module.
+10/02/2026 - Added FASTK_FASTK module.
+10/02/2026 - Added SPADES module.
+10/02/2026 - Added MEGAHIT module.
+10/02/2026 - Added MINIA module.
 
 ### `Fixed`
 
-Commented out ch_versions in fsptest.nf, as it was causing the failure of the test.
+09/02/2026 - Commented out ch_versions in fsptest.nf, as it was causing the failure of the test.
 
 ### `Dependencies`
 

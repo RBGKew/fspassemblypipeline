@@ -5,7 +5,11 @@
 // TODO nf-core: A subworkflow SHOULD import at least two modules
 
 include { SEQKIT_STATS      } from '../../../modules/nf-core/seqkit/stats/main'
-// include { SAMTOOLS_INDEX     } from '../../../modules/nf-core/samtools/index/main'
+include { FASTK_FASTK       } from '../../../modules/nf-core/fastk/fastk/main'
+include { SPADES            } from '../../../modules/nf-core/spades/main'
+include { MEGAHIT           } from '../../../modules/nf-core/megahit/main'
+include { MINIA             } from '../../../modules/nf-core/minia/main'
+include { BUSCO_BUSCO       } from '../../../modules/nf-core/busco/busco/main'
 
 workflow GENOME_ASSEMBLY {
 
@@ -17,10 +21,30 @@ workflow GENOME_ASSEMBLY {
     // TODO nf-core: substitute modules here for the modules of your subworkflow
 
     SEQKIT_STATS ( ch_fastp_reads )
+    FASTK_FASTK  ( ch_fastp_reads )
 
-//    SAMTOOLS_INDEX ( SAMTOOLS_SORT.out.bam )
+    // Spades needs a tuple with 4 elements as inputs, so we need to map the channel to add empty lists for the other 2 inputs (see PREPROCESSING subworkflow for example)
+    // SPADES: [ meta, illumina, pacbio, nanopore ]
+    ch_input_reads_spades = ch_fastp_reads.map { meta, reads -> [ meta, reads, [], [] ] }
+
+    SPADES       ( ch_input_reads_spades,
+    [],
+    []
+    )
+
+    // Megahit needs a tuple with 3 elements as input. I can't use ch_fastp_reads directly because R1 and R2 paths there are in a single list element. So I need to map the channel to split R1 and R2 into separate list elements.
+    // MEGAHIT: [ meta, reads1, reads2 ]
+    ch_input_reads_megahit = ch_fastp_reads.map { meta, reads -> [ meta, reads[0], reads[1] ] }
+
+    MEGAHIT      ( ch_input_reads_megahit )
+
+    MINIA        ( ch_fastp_reads )
 
     emit:
     // TODO nf-core: edit emitted channels
     seqkit_stats      = SEQKIT_STATS.out.stats           // channel: [ val(meta), [ bam ] ]
+    fastk_ktab        = FASTK_FASTK.out.ktab                   // channel: [ val(meta), path('*.ktab') ]
+    spades_scaffolds  = SPADES.out.scaffolds             // channel: [ val(meta), path('*.scaffolds.fa.gz') ]
+    megahit_contigs   = MEGAHIT.out.contigs              // channel: [ val(meta), path('*.contigs.fa.gz') ]
+    minia_contigs     = MINIA.out.contigs                // channel: [ val(meta), path('*.contigs.fa') ]
 }
