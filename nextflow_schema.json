@@ -263,6 +263,10 @@
         },
         "busco_extra_args": {
             "type": "string"
+        },
+        "quast_extra_args": {
+            "type": "string",
+            "default": "--min-contig 100"
         }
     }
 }
