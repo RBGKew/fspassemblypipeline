@@ -267,6 +267,10 @@
         "quast_extra_args": {
             "type": "string",
             "default": "--min-contig 100"
+        },
+        "busco_lineage_specific": {
+            "type": "string",
+            "default": "basidiomycota_odb12"
         }
     }
 }

@@ -4,15 +4,17 @@
 //               https://nf-co.re/join
 // TODO nf-core: A subworkflow SHOULD import at least two modules
 
-include { SEQKIT_STATS        } from '../../../modules/nf-core/seqkit/stats/main'
-include { FASTK_FASTK         } from '../../../modules/nf-core/fastk/fastk/main'
-include { SPADES              } from '../../../modules/nf-core/spades/main'
-include { MEGAHIT             } from '../../../modules/nf-core/megahit/main'
-include { MINIA               } from '../../../modules/nf-core/minia/main'
-include { RENAME_ASSEMBLIES   } from '../../../modules/local/rename_assemblies/main' 
-include { BUSCO_BUSCO         } from '../../../modules/nf-core/busco/busco/main'
-include { MERQURYFK_MERQURYFK } from '../../../modules/nf-core/merquryfk/merquryfk/main'
-include { QUAST               } from '../../../modules/nf-core/quast/main'
+include { SEQKIT_STATS                         } from '../../../modules/nf-core/seqkit/stats/main'
+// include { SEQKIT_STATS as SEQKIT_STATS_MERGED  } from '../../../modules/nf-core/seqkit/stats/main' I can't work on this if the preprocessing subworkflow is not updated to ouput merged reads.
+include { FASTK_FASTK                          } from '../../../modules/nf-core/fastk/fastk/main'
+include { SPADES                               } from '../../../modules/nf-core/spades/main'
+include { MEGAHIT                              } from '../../../modules/nf-core/megahit/main'
+include { MINIA                                } from '../../../modules/nf-core/minia/main'
+include { RENAME_ASSEMBLIES                    } from '../../../modules/local/rename_assemblies/main' 
+include { BUSCO_BUSCO                          } from '../../../modules/nf-core/busco/busco/main'
+include { BUSCO_BUSCO as BUSCO_SPECIFIC        } from '../../../modules/nf-core/busco/busco/main'
+include { MERQURYFK_MERQURYFK                  } from '../../../modules/nf-core/merquryfk/merquryfk/main'
+include { QUAST                                } from '../../../modules/nf-core/quast/main'
 
 workflow GENOME_ASSEMBLY {
 
@@ -24,6 +26,7 @@ workflow GENOME_ASSEMBLY {
     // TODO nf-core: substitute modules here for the modules of your subworkflow
 
     SEQKIT_STATS ( ch_fastp_reads )
+//    SEQKIT_STATS_MERGED
     FASTK_FASTK  ( ch_fastp_reads )
 
     // Spades needs a tuple with 4 elements as inputs, so we need to map the channel to add empty lists for the other 2 inputs (see PREPROCESSING subworkflow for example)
@@ -64,6 +67,7 @@ workflow GENOME_ASSEMBLY {
     RENAME_ASSEMBLIES ( ch_draft_assemblies_input )
 
     BUSCO_BUSCO ( RENAME_ASSEMBLIES.out.renamed_assemblies, params.busco_mode, params.busco_lineage, params.busco_lineages_path ?:[], params.busco_config_file ?:[], params.busco_clean_intermediates )
+    BUSCO_SPECIFIC ( RENAME_ASSEMBLIES.out.renamed_assemblies, params.busco_mode, params.busco_lineage_specific, params.busco_lineages_path ?:[], params.busco_config_file ?:[], params.busco_clean_intermediates )
 
     // input channel for the first input required by merquryfk: tuple val(meta) , path(fastk_hist), path(fastk_ktab), path(assembly), path(haplotigs)
     // to obtain this:
