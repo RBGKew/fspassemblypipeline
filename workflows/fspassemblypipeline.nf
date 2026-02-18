@@ -17,7 +17,7 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_fspt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-workflow FSPTEST {
+workflow FSPASSEMBLYPIPELINE {
 
     take:
     ch_samplesheet // channel: samplesheet read in from --input
