@@ -211,5 +211,66 @@
         {
             "$ref": "#/$defs/generic_options"
         }
-    ]
+    ],
+    "properties": {
+        "fastk_kmer": {
+            "type": "integer",
+            "default": 17
+        },
+        "fastk_t": {
+            "type": "integer",
+            "default": 1
+        },
+        "spades_kmer_list": {
+            "type": "string",
+            "default": "auto"
+        },
+        "spades_extra_args": {
+            "type": "string",
+            "default": "--only-assembler"
+        },
+        "megahit_kmer_list": {
+            "type": "string",
+            "default": "21,29,39,59,79,99,119,141"
+        },
+        "megahit_extra_args": {
+            "type": "string",
+            "default": "--no-mercy --min-count 3"
+        },
+        "minia_kmer": {
+            "type": "integer",
+            "default": 21
+        },
+        "minia_extra_args": {
+            "type": "string"
+        },
+        "busco_mode": {
+            "type": "string",
+            "default": "genome"
+        },
+        "busco_lineage": {
+            "type": "string",
+            "default": "fungi_odb12"
+        },
+        "busco_lineages_path": {
+            "type": "string"
+        },
+        "busco_config_file": {
+            "type": "string"
+        },
+        "busco_clean_intermediates": {
+            "type": "boolean"
+        },
+        "busco_extra_args": {
+            "type": "string"
+        },
+        "quast_extra_args": {
+            "type": "string",
+            "default": "--min-contig 100"
+        },
+        "busco_lineage_specific": {
+            "type": "string",
+            "default": "basidiomycota_odb12"
+        }
+    }
 }
