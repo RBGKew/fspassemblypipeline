@@ -1,5 +1,9 @@
 name: Feature request
+<<<<<<< HEAD
 description: Suggest an idea for the nf-core/fspassemblypipeline pipeline
+=======
+description: Suggest an idea for the nf-core/fsptest pipeline
+>>>>>>> NiallG1/fsptest/dev
 labels: enhancement
 body:
   - type: textarea

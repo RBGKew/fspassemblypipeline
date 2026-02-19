@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # nf-core/fspassemblypipeline: Documentation
 
 The nf-core/fspassemblypipeline documentation is split into the following pages:
+=======
+# nf-core/fsptest: Documentation
+
+The nf-core/fsptest documentation is split into the following pages:
+>>>>>>> NiallG1/fsptest/dev
 
 - [Usage](usage.md)
   - An overview of how the pipeline works, how to run it and a description of all of the different command-line flags.

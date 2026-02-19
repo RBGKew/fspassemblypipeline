@@ -21,7 +21,11 @@ nextflow_pipeline {
                 { assert workflow.success},
                 { assert snapshot(
                     // pipeline versions.yml file for multiqc from which Nextflow version is removed because we test pipelines on multiple Nextflow versions
+<<<<<<< HEAD
                     removeNextflowVersion("$outputDir/pipeline_info/nf_core_fspassemblypipeline_software_mqc_versions.yml"),
+=======
+                    removeNextflowVersion("$outputDir/pipeline_info/nf_core_fsptest_software_mqc_versions.yml"),
+>>>>>>> NiallG1/fsptest/dev
                     // All stable path name, with a relative path
                     stable_name,
                     // All files with stable contents

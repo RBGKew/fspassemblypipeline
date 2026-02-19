@@ -7,3 +7,7 @@ testing/
 testing*
 *.pyc
 null/
+<<<<<<< HEAD
+=======
+tiara-trial/**
+>>>>>>> NiallG1/fsptest/dev

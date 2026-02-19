@@ -1,7 +1,12 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+<<<<<<< HEAD
     "$id": "https://raw.githubusercontent.com/nf-core/fspassemblypipeline/master/assets/schema_input.json",
     "title": "nf-core/fspassemblypipeline pipeline - params.input schema",
+=======
+    "$id": "https://raw.githubusercontent.com/nf-core/fsptest/main/assets/schema_input.json",
+    "title": "nf-core/fsptest pipeline - params.input schema",
+>>>>>>> NiallG1/fsptest/dev
     "description": "Schema for the file provided with params.input",
     "type": "array",
     "items": {

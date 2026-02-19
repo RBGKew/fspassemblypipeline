@@ -9,7 +9,11 @@ jobs:
     if: >
       contains(github.event.comment.html_url, '/pull/') &&
       contains(github.event.comment.body, '@nf-core-bot fix linting') &&
+<<<<<<< HEAD
       github.repository == 'nf-core/fspassemblypipeline'
+=======
+      github.repository == 'nf-core/fsptest'
+>>>>>>> NiallG1/fsptest/dev
     runs-on: ubuntu-latest
     steps:
       # Use the @nf-core-bot token to check out so we can push later
@@ -86,4 +90,8 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             @${{ github.actor }} I tried to fix the linting errors, but it didn't work. Please fix them manually.
+<<<<<<< HEAD
             See [CI log](https://github.com/nf-core/fspassemblypipeline/actions/runs/${{ github.run_id }}) for more details.
+=======
+            See [CI log](https://github.com/nf-core/fsptest/actions/runs/${{ github.run_id }}) for more details.
+>>>>>>> NiallG1/fsptest/dev

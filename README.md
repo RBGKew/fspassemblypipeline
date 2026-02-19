@@ -1,13 +1,16 @@
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/nf-core-fspassemblypipeline_logo_dark.png">
-    <img alt="nf-core/fspassemblypipeline" src="docs/images/nf-core-fspassemblypipeline_logo_light.png">
+    
+=======
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/nf-core-fsptest_logo_dark.png">
+    <img alt="nf-core/fsptest" src="docs/images/nf-core-fsptest_logo_light.png">
   </picture>
 </h1>
 
-[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/nf-core/fspassemblypipeline)
-[![GitHub Actions CI Status](https://github.com/nf-core/fspassemblypipeline/actions/workflows/nf-test.yml/badge.svg)](https://github.com/nf-core/fspassemblypipeline/actions/workflows/nf-test.yml)
-[![GitHub Actions Linting Status](https://github.com/nf-core/fspassemblypipeline/actions/workflows/linting.yml/badge.svg)](https://github.com/nf-core/fspassemblypipeline/actions/workflows/linting.yml)[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/fspassemblypipeline/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/nf-core/fsptest)
+[![GitHub Actions CI Status](https://github.com/nf-core/fsptest/actions/workflows/nf-test.yml/badge.svg)](https://github.com/nf-core/fsptest/actions/workflows/nf-test.yml)
+[![GitHub Actions Linting Status](https://github.com/nf-core/fsptest/actions/workflows/linting.yml/badge.svg)](https://github.com/nf-core/fsptest/actions/workflows/linting.yml)[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/fsptest/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
+>>>>>>> NiallG1/fsptest/dev
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
 [![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.04.0-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
@@ -15,13 +18,16 @@
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
-[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/nf-core/fspassemblypipeline)
 
-[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23fspassemblypipeline-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/fspassemblypipeline)[![Follow on Bluesky](https://img.shields.io/badge/bluesky-%40nf__core-1185fe?labelColor=000000&logo=bluesky)](https://bsky.app/profile/nf-co.re)[![Follow on Mastodon](https://img.shields.io/badge/mastodon-nf__core-6364ff?labelColor=FFFFFF&logo=mastodon)](https://mstdn.science/@nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
+=======
+[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/nf-core/fsptest)
+
+[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23fsptest-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/fsptest)[![Follow on Bluesky](https://img.shields.io/badge/bluesky-%40nf__core-1185fe?labelColor=000000&logo=bluesky)](https://bsky.app/profile/nf-co.re)[![Follow on Mastodon](https://img.shields.io/badge/mastodon-nf__core-6364ff?labelColor=FFFFFF&logo=mastodon)](https://mstdn.science/@nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
 
 ## Introduction
 
-**nf-core/fspassemblypipeline** is a bioinformatics pipeline that ...
+**nf-core/fsptest** is a bioinformatics pipeline that ...
+>>>>>>> NiallG1/fsptest/dev
 
 <!-- TODO nf-core:
    Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
@@ -59,7 +65,11 @@ Now, you can run the pipeline using:
 <!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
+<<<<<<< HEAD
 nextflow run nf-core/fspassemblypipeline \
+=======
+nextflow run nf-core/fsptest \
+>>>>>>> NiallG1/fsptest/dev
    -profile <docker/singularity/.../institute> \
    --input samplesheet.csv \
    --outdir <OUTDIR>
@@ -68,6 +78,7 @@ nextflow run nf-core/fspassemblypipeline \
 > [!WARNING]
 > Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see [docs](https://nf-co.re/docs/usage/getting_started/configuration#custom-configuration-files).
 
+<<<<<<< HEAD
 For more details and further functionality, please refer to the [usage documentation](https://nf-co.re/fspassemblypipeline/usage) and the [parameter documentation](https://nf-co.re/fspassemblypipeline/parameters).
 
 ## Pipeline output
@@ -79,6 +90,19 @@ For more details about the output files and reports, please refer to the
 ## Credits
 
 nf-core/fspassemblypipeline was originally written by Lia Obinu, Niall Garvey, Wu Huang.
+=======
+For more details and further functionality, please refer to the [usage documentation](https://nf-co.re/fsptest/usage) and the [parameter documentation](https://nf-co.re/fsptest/parameters).
+
+## Pipeline output
+
+To see the results of an example test run with a full size dataset refer to the [results](https://nf-co.re/fsptest/results) tab on the nf-core website pipeline page.
+For more details about the output files and reports, please refer to the
+[output documentation](https://nf-co.re/fsptest/output).
+
+## Credits
+
+nf-core/fsptest was originally written by Fernando Duarte, Chris Wyatt.
+>>>>>>> NiallG1/fsptest/dev
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
@@ -88,12 +112,20 @@ We thank the following people for their extensive assistance in the development 
 
 If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
 
+<<<<<<< HEAD
 For further information or help, don't hesitate to get in touch on the [Slack `#fspassemblypipeline` channel](https://nfcore.slack.com/channels/fspassemblypipeline) (you can join with [this invite](https://nf-co.re/join/slack)).
+=======
+For further information or help, don't hesitate to get in touch on the [Slack `#fsptest` channel](https://nfcore.slack.com/channels/fsptest) (you can join with [this invite](https://nf-co.re/join/slack)).
+>>>>>>> NiallG1/fsptest/dev
 
 ## Citations
 
 <!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
+<<<<<<< HEAD
 <!-- If you use nf-core/fspassemblypipeline for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
+=======
+<!-- If you use nf-core/fsptest for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
+>>>>>>> NiallG1/fsptest/dev
 
 <!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 

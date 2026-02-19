@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # nf-core/fspassemblypipeline: Citations
+=======
+# nf-core/fsptest: Citations
+>>>>>>> NiallG1/fsptest/dev
 
 ## [nf-core](https://pubmed.ncbi.nlm.nih.gov/32055031/)
 

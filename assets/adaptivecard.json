@@ -17,7 +17,11 @@
                         "size": "Large",
                         "weight": "Bolder",
                         "color": "<% if (success) { %>Good<% } else { %>Attention<%} %>",
+<<<<<<< HEAD
                         "text": "nf-core/fspassemblypipeline v${version} - ${runName}",
+=======
+                        "text": "nf-core/fsptest v${version} - ${runName}",
+>>>>>>> NiallG1/fsptest/dev
                         "wrap": true
                     },
                     {

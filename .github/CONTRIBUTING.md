@@ -1,15 +1,25 @@
+<<<<<<< HEAD
 # `nf-core/fspassemblypipeline`: Contributing Guidelines
 
 Hi there!
 Many thanks for taking an interest in improving nf-core/fspassemblypipeline.
 
 We try to manage the required tasks for nf-core/fspassemblypipeline using GitHub issues, you probably came to this page when creating one.
+=======
+# `nf-core/fsptest`: Contributing Guidelines
+
+Hi there!
+Many thanks for taking an interest in improving nf-core/fsptest.
+
+We try to manage the required tasks for nf-core/fsptest using GitHub issues, you probably came to this page when creating one.
+>>>>>>> NiallG1/fsptest/dev
 Please use the pre-filled template to save time.
 
 However, don't be put off by this template - other more general issues and suggestions are welcome!
 Contributions to the code are even more welcome ;)
 
 > [!NOTE]
+<<<<<<< HEAD
 > If you need help using or modifying nf-core/fspassemblypipeline then the best place to ask is on the nf-core Slack [#fspassemblypipeline](https://nfcore.slack.com/channels/fspassemblypipeline) channel ([join our Slack here](https://nf-co.re/join/slack)).
 
 ## Contribution workflow
@@ -18,6 +28,16 @@ If you'd like to write some code for nf-core/fspassemblypipeline, the standard w
 
 1. Check that there isn't already an issue about your idea in the [nf-core/fspassemblypipeline issues](https://github.com/nf-core/fspassemblypipeline/issues) to avoid duplicating work. If there isn't one already, please create one so that others know you're working on this
 2. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [nf-core/fspassemblypipeline repository](https://github.com/nf-core/fspassemblypipeline) to your GitHub account
+=======
+> If you need help using or modifying nf-core/fsptest then the best place to ask is on the nf-core Slack [#fsptest](https://nfcore.slack.com/channels/fsptest) channel ([join our Slack here](https://nf-co.re/join/slack)).
+
+## Contribution workflow
+
+If you'd like to write some code for nf-core/fsptest, the standard workflow is as follows:
+
+1. Check that there isn't already an issue about your idea in the [nf-core/fsptest issues](https://github.com/nf-core/fsptest/issues) to avoid duplicating work. If there isn't one already, please create one so that others know you're working on this
+2. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [nf-core/fsptest repository](https://github.com/nf-core/fsptest) to your GitHub account
+>>>>>>> NiallG1/fsptest/dev
 3. Make the necessary changes / additions within your forked repository following [Pipeline conventions](#pipeline-contribution-conventions)
 4. Use `nf-core pipelines schema build` and add any new parameters to the pipeline JSON schema (requires [nf-core tools](https://github.com/nf-core/tools) >= 1.10).
 5. Submit a Pull Request against the `dev` branch and wait for the code to be reviewed and merged
@@ -61,11 +81,19 @@ These tests are run both with the latest available version of `Nextflow` and als
 
 ## Getting help
 
+<<<<<<< HEAD
 For further information/help, please consult the [nf-core/fspassemblypipeline documentation](https://nf-co.re/fspassemblypipeline/usage) and don't hesitate to get in touch on the nf-core Slack [#fspassemblypipeline](https://nfcore.slack.com/channels/fspassemblypipeline) channel ([join our Slack here](https://nf-co.re/join/slack)).
 
 ## Pipeline contribution conventions
 
 To make the `nf-core/fspassemblypipeline` code and processing logic more understandable for new contributors and to ensure quality, we semi-standardise the way the code and other contributions are written.
+=======
+For further information/help, please consult the [nf-core/fsptest documentation](https://nf-co.re/fsptest/usage) and don't hesitate to get in touch on the nf-core Slack [#fsptest](https://nfcore.slack.com/channels/fsptest) channel ([join our Slack here](https://nf-co.re/join/slack)).
+
+## Pipeline contribution conventions
+
+To make the `nf-core/fsptest` code and processing logic more understandable for new contributors and to ensure quality, we semi-standardise the way the code and other contributions are written.
+>>>>>>> NiallG1/fsptest/dev
 
 ### Adding a new step
 
@@ -115,7 +143,11 @@ This repo includes a devcontainer configuration which will create a GitHub Codes
 
 To get started:
 
+<<<<<<< HEAD
 - Open the repo in [Codespaces](https://github.com/nf-core/fspassemblypipeline/codespaces)
+=======
+- Open the repo in [Codespaces](https://github.com/nf-core/fsptest/codespaces)
+>>>>>>> NiallG1/fsptest/dev
 - Tools installed
   - nf-core
   - Nextflow

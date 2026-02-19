@@ -4,15 +4,26 @@
   |\\ | |__  __ /  ` /  \\ |__) |__         }  {
   | \\| |       \\__, \\__/ |  \\ |___     \\`-._,-`-,
                                         `._,._,'
+<<<<<<< HEAD
   nf-core/fspassemblypipeline ${version}
+=======
+  nf-core/fsptest ${version}
+>>>>>>> NiallG1/fsptest/dev
 ----------------------------------------------------
 Run Name: $runName
 
 <% if (success){
+<<<<<<< HEAD
     out << "## nf-core/fspassemblypipeline execution completed successfully! ##"
 } else {
     out << """####################################################
 ## nf-core/fspassemblypipeline execution completed unsuccessfully! ##
+=======
+    out << "## nf-core/fsptest execution completed successfully! ##"
+} else {
+    out << """####################################################
+## nf-core/fsptest execution completed unsuccessfully! ##
+>>>>>>> NiallG1/fsptest/dev
 ####################################################
 The exit status of the task that caused the workflow execution to fail was: $exitStatus.
 The full error message was:
@@ -35,5 +46,10 @@ Pipeline Configuration:
 <% out << summary.collect{ k,v -> " - $k: $v" }.join("\n") %>
 
 --
+<<<<<<< HEAD
 nf-core/fspassemblypipeline
 https://github.com/nf-core/fspassemblypipeline
+=======
+nf-core/fsptest
+https://github.com/nf-core/fsptest
+>>>>>>> NiallG1/fsptest/dev

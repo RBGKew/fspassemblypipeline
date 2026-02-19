@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # nf-core/fspassemblypipeline: Output
+=======
+# nf-core/fsptest: Output
+>>>>>>> NiallG1/fsptest/dev
 
 ## Introduction
 

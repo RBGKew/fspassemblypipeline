@@ -8,7 +8,11 @@ body:
         Before you post this issue, please check the documentation:
 
         - [nf-core website: troubleshooting](https://nf-co.re/usage/troubleshooting)
+<<<<<<< HEAD
         - [nf-core/fspassemblypipeline pipeline documentation](https://nf-co.re/fspassemblypipeline/usage)
+=======
+        - [nf-core/fsptest pipeline documentation](https://nf-co.re/fsptest/usage)
+>>>>>>> NiallG1/fsptest/dev
   - type: textarea
     id: description
     attributes:
@@ -46,4 +50,8 @@ body:
         * Executor _(eg. slurm, local, awsbatch)_
         * Container engine: _(e.g. Docker, Singularity, Conda, Podman, Shifter, Charliecloud, or Apptainer)_
         * OS _(eg. CentOS Linux, macOS, Linux Mint)_
+<<<<<<< HEAD
         * Version of nf-core/fspassemblypipeline _(eg. 1.1, 1.5, 1.8.2)_
+=======
+        * Version of nf-core/fsptest _(eg. 1.1, 1.5, 1.8.2)_
+>>>>>>> NiallG1/fsptest/dev
