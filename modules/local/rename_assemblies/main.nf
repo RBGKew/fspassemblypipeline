@@ -6,8 +6,8 @@ process RENAME_ASSEMBLIES {
     
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/gzip:1.11' :
-        'quay.io/biocontainers/gzip:1.11' }"
+        'https://depot.galaxyproject.org/singularity/coreutils:9.5' :
+        'quay.io/biocontainers/coreutils:9.5' }"
 
     input:
     tuple val(meta), path(input_file), val(new_name)
