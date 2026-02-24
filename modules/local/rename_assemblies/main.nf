@@ -8,9 +8,6 @@ process RENAME_ASSEMBLIES {
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/gzip:1.11' :
         'quay.io/biocontainers/gzip:1.11' }"
-//    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-//        'https://depot.galaxyproject.org/singularity/my_tool:1.0--hdfd78af_0' :
-//        'quay.io/biocontainers/my_tool:1.0--hdfd78af_0' }"
 
     input:
     tuple val(meta), path(input_file), val(new_name)
@@ -23,7 +20,7 @@ process RENAME_ASSEMBLIES {
     """
     if [ "${is_gzipped}" == "true" ]; then
         # Already gzipped, just rename
-        ln -s ${input_file} ${new_name}.gz
+        ln -srn ${input_file} ${new_name}.gz
     else
         # Gzip and rename
         gzip -c ${input_file} > ${new_name}.gz
