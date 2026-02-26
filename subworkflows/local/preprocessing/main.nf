@@ -41,5 +41,6 @@ workflow PREPROCESSING {
 
     emit:
     // Emit module versions
-    versions = ch_versions
+    fastp_reads   = FASTP.out.reads
+    versions      = ch_versions
 }

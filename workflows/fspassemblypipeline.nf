@@ -4,12 +4,13 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+include { GENOME_ASSEMBLY        } from '../subworkflows/local/genome_assembly/main'
 include { PREPROCESSING          } from '../subworkflows/local/preprocessing/main'
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
-include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_fsptest_pipeline'
+include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_fspassemblypipeline_pipeline'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,7 +33,14 @@ workflow FSPASSEMBLYPIPELINE {
     PREPROCESSING (
         ch_samplesheet
     )
-    ch_versions = ch_versions.mix( PREPROCESSING.out.versions )
+//    ch_versions = ch_versions.mix( PREPROCESSING.out.versions )
+
+
+    GENOME_ASSEMBLY (
+        PREPROCESSING.out.fastp_reads
+    )
+//    ch_versions = ch_versions.mix( GENOME_ASSEMBLY.out.versions )
+
 
     // ch_multiqc_files = ch_multiqc_files.mix(FASTQC.out.zip.collect{it[1]})
 
