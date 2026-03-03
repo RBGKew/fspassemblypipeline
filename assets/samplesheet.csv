@@ -1,2 +1,2 @@
-sample,fastq_1,fastq_2
-SAMPLE_FSP_PAIRED_END,./assets/dataset/B37-LG146-LP1_R1.fastq.gz,./assets/dataset/B37-LG146-LP1_R2.fastq.gz
+sample,file_1,file_2,type
+SAMPLE_FSP_PAIRED_END,./assets/dataset/B37-LG146-LP1_R1.fastq.gz,./assets/dataset/B37-LG146-LP1_R2.fastq.gz,raw

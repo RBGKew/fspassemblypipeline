@@ -30,14 +30,23 @@ workflow FSPASSEMBLYPIPELINE {
     //
     // SUBWORKFLOW: Run PREPROCESSING
     //
+
+    ch_samplesheet = ch_samplesheet
+        .branch { meta, files ->
+            raw: meta.type == 'raw'
+            cleaned: meta.type == 'cleaned'
+            merged: meta.type == 'merged'
+            bam: meta.type == 'bam'
+        }
+
     PREPROCESSING (
-        ch_samplesheet
+        ch_samplesheet.raw
     )
 //    ch_versions = ch_versions.mix( PREPROCESSING.out.versions )
 
 
     GENOME_ASSEMBLY (
-        PREPROCESSING.out.fastp_reads
+        PREPROCESSING.out.fastp_reads.mix(ch_samplesheet.cleaned)
     )
 //    ch_versions = ch_versions.mix( GENOME_ASSEMBLY.out.versions )
 
