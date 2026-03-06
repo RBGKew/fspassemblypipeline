@@ -37,14 +37,17 @@ workflow GENOME_ASSEMBLY {
     [],
     []
     )
+    ch_versions = SPADES.out.versions
 
     // Megahit needs a tuple with 3 elements as input. I can't use ch_fastp_reads directly because R1 and R2 paths there are in a single list element. So I need to map the channel to split R1 and R2 into separate list elements.
     // MEGAHIT: [ meta, reads1, reads2 ]
     ch_input_reads_megahit = ch_fastp_reads.map { meta, reads -> [ meta, reads[0], reads[1] ] }
 
     MEGAHIT      ( ch_input_reads_megahit )
+    ch_versions = ch_versions.mix(MEGAHIT.out.versions)
 
     MINIA        ( ch_fastp_reads )
+    ch_versions = ch_versions.mix(MINIA.out.versions)
 
     // input channel for renaming the assemblies. I need to change the meta.id to include the assembler and avoid conflicts in the output names.
     def ch_draft_assemblies_input = SPADES.out.scaffolds.map { meta, scaffolds -> 
@@ -101,4 +104,5 @@ workflow GENOME_ASSEMBLY {
     busco_short_summaries_txt    = BUSCO_BUSCO.out.short_summaries_txt  // channel: [ val(meta), path('short_summary.*.txt') ]
     merquryfk_completeness_stats = MERQURYFK_MERQURYFK.out.stats // channel: [ val(meta), path('*.completeness.stats') ]
     quast_results                = QUAST.out.results         // channel: [ val(meta), path("${prefix}") ]
+    versions                     = ch_versions
 }

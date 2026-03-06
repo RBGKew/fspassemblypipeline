@@ -35,20 +35,19 @@ workflow FSPASSEMBLYPIPELINE {
         .branch { meta, files ->
             raw: meta.type == 'raw'
             cleaned: meta.type == 'cleaned'
-            merged: meta.type == 'merged'
             bam: meta.type == 'bam'
         }
 
     PREPROCESSING (
         ch_samplesheet.raw
     )
-//    ch_versions = ch_versions.mix( PREPROCESSING.out.versions )
+    ch_versions = ch_versions.mix( PREPROCESSING.out.versions )
 
 
     GENOME_ASSEMBLY (
         PREPROCESSING.out.fastp_reads.mix(ch_samplesheet.cleaned)
     )
-//    ch_versions = ch_versions.mix( GENOME_ASSEMBLY.out.versions )
+    ch_versions = ch_versions.mix( GENOME_ASSEMBLY.out.versions )
 
 
     // ch_multiqc_files = ch_multiqc_files.mix(FASTQC.out.zip.collect{it[1]})

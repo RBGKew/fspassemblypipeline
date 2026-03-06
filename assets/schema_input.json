@@ -29,7 +29,7 @@
             },
             "type": {
                 "type": "string",
-                "enum": ["raw", "cleaned", "merged", "bam"],
+                "enum": ["raw", "cleaned", "bam"],
                 "errorMessage": "Type must be either 'raw', 'cleaned', 'merged', or 'bam'",
                 "meta": ["type"]
             },
@@ -44,6 +44,26 @@
                 "type": "integer",
                 "errorMessage": "Species TaxiID for decontamination screening, must be a valid NCBI Taxonomy ID (positive integer)",
                 "meta": ["taxid"]
+            },
+            "family": {
+                "type": "integer",
+                "errorMessage": "Species family, must be in lower case",
+                "meta": ["family"]
+            },
+            "order": {
+                "type": "integer",
+                "errorMessage": "Species order, must be in lower case",
+                "meta": ["order"]
+            },
+            "class": {
+                "type": "integer",
+                "errorMessage": "Species class, must be in lower case",
+                "meta": ["class"]
+            },
+            "phylum": {
+                "type": "integer",
+                "errorMessage": "Species phylum, must be in lower case",
+                "meta": ["phylum"]
             }
         },
         "required": ["sample", "file_1", "type"]
