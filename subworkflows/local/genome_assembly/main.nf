@@ -10,7 +10,7 @@ include { FASTK_FASTK                          } from '../../../modules/nf-core/
 include { SPADES                               } from '../../../modules/nf-core/spades/main'
 include { MEGAHIT                              } from '../../../modules/nf-core/megahit/main'
 include { MINIA                                } from '../../../modules/nf-core/minia/main'
-include { RENAME_ASSEMBLIES                    } from '../../../modules/local/rename_assemblies/main' 
+include { RENAME_ASSEMBLIES                    } from '../../../modules/local/rename_assemblies/main'
 include { BUSCO_BUSCO                          } from '../../../modules/nf-core/busco/busco/main'
 include { BUSCO_BUSCO as BUSCO_SPECIFIC        } from '../../../modules/nf-core/busco/busco/main'
 include { MERQURYFK_MERQURYFK                  } from '../../../modules/nf-core/merquryfk/merquryfk/main'
@@ -50,18 +50,18 @@ workflow GENOME_ASSEMBLY {
     ch_versions = ch_versions.mix(MINIA.out.versions)
 
     // input channel for renaming the assemblies. I need to change the meta.id to include the assembler and avoid conflicts in the output names.
-    def ch_draft_assemblies_input = SPADES.out.scaffolds.map { meta, scaffolds -> 
+    def ch_draft_assemblies_input = SPADES.out.scaffolds.map { meta, scaffolds ->
         // add assembler name to meta.id to ensure unique output names
         def assembler = 'spades'
         def new_meta = meta + [assembly_id: "${meta.id}_${assembler}", assembler: 'spades', id: meta.id]
         return [ new_meta, scaffolds, "${meta.id}_${assembler}.fa" ]
     }
-    .mix( MEGAHIT.out.contigs.map { meta, contigs -> 
+    .mix( MEGAHIT.out.contigs.map { meta, contigs ->
         def assembler = 'megahit'
         def new_meta = meta + [assembly_id: "${meta.id}_${assembler}", assembler: 'megahit', id: meta.id]
         return [ new_meta, contigs, "${meta.id}_${assembler}.fa" ]
     } )
-    .mix( MINIA.out.contigs.map { meta, contigs -> 
+    .mix( MINIA.out.contigs.map { meta, contigs ->
         def assembler = 'minia'
         def new_meta = meta + [assembly_id: "${meta.id}_${assembler}", assembler: 'minia', id: meta.id]
         return [ new_meta, contigs, "${meta.id}_${assembler}.fa" ]
@@ -75,12 +75,12 @@ workflow GENOME_ASSEMBLY {
     // input channel for the first input required by merquryfk: tuple val(meta) , path(fastk_hist), path(fastk_ktab), path(assembly), path(haplotigs)
     // to obtain this:
     // 1. join fastk hist and ktab in a single list and map to meta.id to be use as key to then join with the assemblies
-    def ch_combined_fastk = FASTK_FASTK.out.hist.join(FASTK_FASTK.out.ktab, by: 0).map { meta, hist, ktab -> [ meta.id, hist, ktab ] } 
+    def ch_combined_fastk = FASTK_FASTK.out.hist.join(FASTK_FASTK.out.ktab, by: 0).map { meta, hist, ktab -> [ meta.id, hist, ktab ] }
     // 2. map renamed assemblies to original meta.id (to be used as key to then join with combined fastk results)
     def ch_draft_assemblies_mapped_to_id = RENAME_ASSEMBLIES.out.renamed_assemblies.map { meta, renamed_assembly -> [ meta.id, meta, renamed_assembly ]}
-    // 3. join combined fastk with renamed assemblies using meta.id as key 
+    // 3. join combined fastk with renamed assemblies using meta.id as key
     def ch_merquryfk_input = ch_combined_fastk.combine( ch_draft_assemblies_mapped_to_id, by: 0 ).map { sample_id, hist, ktab, meta, assembly -> [ meta, hist, ktab, assembly, [] ] }
-    
+
     MERQURYFK_MERQURYFK ( ch_merquryfk_input, [[],[]], [[],[]] ) // no mathernal and pathernal haplotypes for trio mode
 
     // input channel for quast: I want to run quast once per sample, so I have to group the different assemblies per sample name
