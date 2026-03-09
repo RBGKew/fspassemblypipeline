@@ -3,7 +3,7 @@
 process RENAME_ASSEMBLIES {
     tag "$meta.id"
     label 'process_low'
-    
+
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/coreutils:9.5' :

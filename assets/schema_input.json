@@ -13,21 +13,59 @@
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
                 "meta": ["id"]
             },
-            "fastq_1": {
+            "file_1": {
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
-                "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+                "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?q\\.gz$|^[\\S\\s]*\\/[^\\s\\/]+\\.bam$",
+                "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'. Alternatively, for BAM input, this can be the path to the BAM file (must have extension '.bam')"
             },
-            "fastq_2": {
+            "file_2": {
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
                 "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?q\\.gz$",
                 "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+            },
+            "type": {
+                "type": "string",
+                "enum": ["raw", "cleaned", "bam"],
+                "errorMessage": "Type must be either 'raw', 'cleaned', 'merged', or 'bam'",
+                "meta": ["type"]
+            },
+            "fasta": {
+                "type": "string",
+                "format": "file-path",
+                "exists": true,
+                "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?a\\.gz$",
+                "errorMessage": "Fasta file for BAM input must be provided, cannot contain spaces and must have extension '.fa.gz' or '.fasta.gz'"
+            },
+            "taxid": {
+                "type": "integer",
+                "errorMessage": "Species TaxiID for decontamination screening, must be a valid NCBI Taxonomy ID (positive integer)",
+                "meta": ["taxid"]
+            },
+            "family": {
+                "type": "integer",
+                "errorMessage": "Species family, must be in lower case",
+                "meta": ["family"]
+            },
+            "order": {
+                "type": "integer",
+                "errorMessage": "Species order, must be in lower case",
+                "meta": ["order"]
+            },
+            "class": {
+                "type": "integer",
+                "errorMessage": "Species class, must be in lower case",
+                "meta": ["class"]
+            },
+            "phylum": {
+                "type": "integer",
+                "errorMessage": "Species phylum, must be in lower case",
+                "meta": ["phylum"]
             }
         },
-        "required": ["sample", "fastq_1"]
+        "required": ["sample", "file_1", "type"]
     }
 }
