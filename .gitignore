@@ -8,3 +8,4 @@ testing*
 *.pyc
 null/
 out_**
+FSP_RawReads_Processing
