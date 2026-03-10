@@ -19,6 +19,13 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 12/02/2026 - Added BUSCO_BUSCO module.
 12/02/2026 - Added MERQURYFK_MERQURYFK module.
 12/02/2026 - Added QUAST module.
+10/03/2026 - Added GENOMESCOPE2 module.
+10/03/2026 - Added GENESCOPEFK module.
+10/03/2026 - Added KMC module.
+10/03/2026 - Added FALCO_QCSTAT_COMPILING local module.
+10/03/2026 - Added FQSTAT local module.
+10/03/2026 - Added FQSTATSUMMARY local module.
+10/03/2026 - Added KMER_STAT_SUMMARY local module.
 
 ### `Fixed`
 
