@@ -31,10 +31,6 @@ process KMC {
     // TODO nf-core: Named file extensions MUST be emitted for ALL output channels
     tuple val(meta), path("*.hist"), emit: kmer histograms
     tuple val(meta), path("*.kmc"), emit: kmer databases
-    // TODO nf-core: List additional required output channels/values here
-    // TODO nf-core: Update the command here to obtain the version number of the software used in this module
-    // TODO nf-core: If multiple software packages are used in this module, all MUST be added here
-    //               by copying the line below and replacing the current tool with the extra tool(s)
     tuple val("${task.process}"), val('kmc'), eval("kmc --version |head -1 |cut -d \" \" -f 5"), topic: versions, emit: versions_kmc
 
     when:
