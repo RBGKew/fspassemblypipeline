@@ -15,14 +15,10 @@ process FALCO_QCSTAT_COMPILING {
 
     script:
     def falco_txt_list = falco_txt_files instanceof List ? falco_txt_files : [falco_txt_files]
-    def summary_txt_files = falco_txt_list
-        .findAll { it.getName().endsWith('_summary.txt') }
-        .collect { "falco_inputs/${it.getName()}" }
+    def falco_txt_args = falco_txt_list
+        .collect { "\"${it}\"" }
         .join(' ')
     """
-    mkdir -p falco_inputs
-    cp ${falco_txt_files} falco_inputs/
-
-    bash ${projectDir}/bin/fastQC_result_compiling.sh ${summary_txt_files}
+    bash ${projectDir}/bin/fastQC_result_compiling.sh ${falco_txt_args}
     """
 }
