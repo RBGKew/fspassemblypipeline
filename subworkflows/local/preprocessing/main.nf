@@ -29,7 +29,7 @@ workflow PREPROCESSING {
     // FASTP expects [meta, reads, adapter_fasta].
     ch_samplesheet_fastp = ch_samplesheet.map { meta, reads -> [ meta, reads, [] ] }
 
-// TODO: FASTP needs to add the path to adapter_fasta and specific usage. 
+// TODO: FASTP needs to add the path to adapter_fasta and specific usage.
     FASTP (
         ch_samplesheet_fastp,
         false,
