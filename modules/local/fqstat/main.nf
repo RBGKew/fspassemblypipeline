@@ -14,8 +14,10 @@ process FQSTAT {
     tuple val(meta), path("${meta.id}*.stats"), emit: stats
 
     script:
+    def fastq_file_list = fastq_files instanceof List ? fastq_files : [fastq_files]
+    def fastq_args = fastq_file_list.collect { "\"${it}\"" }.join(' ')
     """
-    for fq in ${fastq_files}; do
+    for fq in ${fastq_args}; do
         perl ${projectDir}/bin/fq_n50.pl "\$fq" > "${meta.id}_\$(basename "\$fq").stats"
     done
     """
