@@ -7,11 +7,12 @@ include { FALCO as FALCO_RAW         } from '../../../modules/nf-core/falco/main
 include { FALCO as FALCO_AFTER_FASTP } from '../../../modules/nf-core/falco/main'
 include { FASTP                      } from '../../../modules/nf-core/fastp/main'
 include { FASTK_FASTK                } from '../../../modules/nf-core/fastk/fastk/main'
+include { FASTK_HISTEX               } from '../../../modules/nf-core/fastk/histex/main'
 include { GENOMESCOPE2               } from '../../../modules/nf-core/genomescope2/main'
-include { FALCO_QCSTAT_COMPILING      } from '../../../modules/local/falco_qcstat_compiling/main'
-include { FQSTAT                      } from '../../../modules/local/fqstat/main'
-include { FQSTAT_SUMMARY              } from '../../../modules/local/fqstat_summary/main'
-include { KMER_STAT_SUMMARY           } from '../../../modules/local/kmer_stat_summary/main'
+include { FALCO_QCSTAT_COMPILING     } from '../../../modules/local/falco_qcstat_compiling/main'
+include { FQSTAT                     } from '../../../modules/local/fqstat/main'
+include { FQSTAT_SUMMARY             } from '../../../modules/local/fqstat_summary/main'
+include { KMER_STAT_SUMMARY          } from '../../../modules/local/kmer_stat_summary/main'
 
 workflow PREPROCESSING {
 
@@ -84,13 +85,18 @@ workflow PREPROCESSING {
     )
     ch_versions = ch_versions.mix( FASTK_FASTK.out.versions_fastk )
 
-    GENOMESCOPE2 (
+    FASTK_HISTEX (
         FASTK_FASTK.out.hist
+    )
+    ch_versions = ch_versions.mix( FASTK_HISTEX.out.versions_fastk )
+
+    GENOMESCOPE2 (
+        FASTK_HISTEX.out.hist
     )
     ch_versions = ch_versions.mix( GENOMESCOPE2.out.versions_genomescope2 )
 
 // Prepare a mixed channel of FastK histograms and Genomescope summaries for KMER_STAT_SUMMARY.
-    ch_fastk_hist_input = FASTK_FASTK.out.hist
+    ch_fastk_hist_input = FASTK_HISTEX.out.hist
         .map { meta, hist -> hist }
         .collect()
         .filter { it }
@@ -113,8 +119,8 @@ workflow PREPROCESSING {
     falco_qc_stats         = FALCO_QCSTAT_COMPILING.out.stats
     fq_stats               = FQSTAT.out.stats
     fq_stats_summary       = FQSTAT_SUMMARY.out.summary
-    fastk_hist             = FASTK_FASTK.out.hist
     fastk_ktab             = FASTK_FASTK.out.ktab
+    fastk_hist             = FASTK_HISTEX.out.hist
     genomescope_summary    = GENOMESCOPE2.out.summary
     kmer_stats_summary     = KMER_STAT_SUMMARY.out.summary
     versions               = ch_versions

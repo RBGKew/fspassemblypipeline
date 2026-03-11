@@ -20,6 +20,11 @@
                         "git_sha": "3bed0255027a76609032ebc321465c94207ef8ed",
                         "installed_by": ["modules"]
                     },
+                    "fastk/histex": {
+                        "branch": "master",
+                        "git_sha": "1838663f8c38ccd7833be0df0e53a26b7c72b567",
+                        "installed_by": ["modules"]
+                    },
                     "fastp": {
                         "branch": "master",
                         "git_sha": "a331ecfd1aa48b2b2298aab23bb4516c800e410b",
