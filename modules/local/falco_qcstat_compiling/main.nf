@@ -14,18 +14,15 @@ process FALCO_QCSTAT_COMPILING {
     tuple val(qc_subdir), path('fastQC_result.txt'), emit: stats
 
     script:
+    def falco_txt_list = falco_txt_files instanceof List ? falco_txt_files : [falco_txt_files]
+    def summary_txt_files = falco_txt_list
+        .findAll { it.getName().endsWith('_summary.txt') }
+        .collect { "falco_inputs/${it.getName()}" }
+        .join(' ')
     """
     mkdir -p falco_inputs
     cp ${falco_txt_files} falco_inputs/
 
-    # The legacy compiler script expects files matching *gz_summary.txt.
-    for summary in falco_inputs/*_summary.txt; do
-        [[ -e "\$summary" ]] || continue
-        if [[ "\$summary" != *gz_summary.txt ]]; then
-            cp "\$summary" "\${summary%_summary.txt}.fq.gz_summary.txt"
-        fi
-    done
-
-    bash ${projectDir}/bin/fastQC_result_compiling.sh
+    bash ${projectDir}/bin/fastQC_result_compiling.sh ${summary_txt_files}
     """
 }
