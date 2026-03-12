@@ -12,7 +12,7 @@ process FASTK_HISTEX {
     tuple val(meta), path(histogram)
 
     output:
-    tuple val(meta), path("*.hist.txt"), emit: hist
+    tuple val(meta), path("*.reads.kmer_freq.hist"), emit: hist
     // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     tuple val("${task.process}"), val('fastk'), val('1.2'), emit: versions_fastk, topic: versions
 
@@ -26,12 +26,12 @@ process FASTK_HISTEX {
     Histex \\
         $args \\
         $histogram \\
-        > ${prefix}.hist.txt
+        > ${prefix}.reads.kmer_freq.hist
     """
 
     stub:
     def prefix        = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.hist.txt
+    touch ${prefix}.reads.kmer_freq.hist
     """
 }
