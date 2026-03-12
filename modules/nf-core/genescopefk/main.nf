@@ -34,8 +34,8 @@ process GENESCOPEFK {
     GeneScopeFK.R \\
         $args \\
         --input $fastk_histex_histogram \\
-        --output . \\
-        --name_prefix ${prefix}
+        --output ${prefix} \\
+        >>${prefix}_genescopefk.log 
 
     printf -v KMERCOV "%.2f" \$( grep "^kmercov" *_model.txt | cut -d" " -f2 )
 
