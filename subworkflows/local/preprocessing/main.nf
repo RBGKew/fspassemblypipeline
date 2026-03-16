@@ -8,7 +8,7 @@ include { FALCO as FALCO_AFTER_FASTP } from '../../../modules/nf-core/falco/main
 include { FASTP                      } from '../../../modules/nf-core/fastp/main'
 include { FASTK_FASTK                } from '../../../modules/nf-core/fastk/fastk/main'
 include { FASTK_HISTEX               } from '../../../modules/nf-core/fastk/histex/main'
-include { GENOMESCOPE2               } from '../../../modules/nf-core/genomescope2/main'
+include { GENESCOPEFK               } from '../../../modules/nf-core/genescopefk/main'
 include { FALCO_QCSTAT_COMPILING     } from '../../../modules/local/falco_qcstat_compiling/main'
 include { FQSTAT                     } from '../../../modules/local/fqstat/main'
 include { FQSTAT_SUMMARY             } from '../../../modules/local/fqstat_summary/main'
