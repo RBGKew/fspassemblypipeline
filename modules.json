@@ -17,7 +17,7 @@
                     },
                     "fastk/fastk": {
                         "branch": "master",
-                        "git_sha": "3bed0255027a76609032ebc321465c94207ef8ed",
+                        "git_sha": "4a2e3a7b7af922aa5b94b00c2e78175be15787a2",
                         "installed_by": ["modules"]
                     },
                     "fastk/histex": {
@@ -37,7 +37,7 @@
                     },
                     "genescopefk": {
                         "branch": "master",
-                        "git_sha": "575e1a4b51a9bad7a8cd1316a88fb85684ef7c7b",
+                        "git_sha": "0110646d0f733d87d8996260cf87d91b7ea2651c",
                         "installed_by": ["modules"]
                     },
                     "genomescope2": {
