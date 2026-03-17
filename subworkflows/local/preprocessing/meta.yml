@@ -74,6 +74,12 @@ output:
         FastK histogram files.
         Structure: [ val(meta), path("*.hist") ]
       pattern: "*.hist"
+  - histex_txt:
+      type: file
+      description: |
+        Histograms reformatted by FASTK_HISTEX.
+        Structure: [ val(meta), path("*.hist.txt") ]
+      pattern: "*.hist.txt"
   - fastk_ktab:
       type: file
       description: |

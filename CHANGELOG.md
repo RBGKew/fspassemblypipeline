@@ -45,6 +45,7 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 12/03/2026 - Added FASTK log output and adjusted GENESCOPEFK output folder/suffix for downstream compatibility.
 13/03/2026 - Updated FASTK and GENESCOPEFK nf-core modules to emit log files and updated the modules from nf-core rather than making local changes.
 16/03/2026 - Updated GENOME_ASSEMBLY subworkflow to incorporate both GENESCOPEFK peak 1 and peak 2.
+17/03/2026 - Aligned FASTK_HISTEX outputs to `*.hist.txt` and updated downstream preprocessing outputs/metadata and k-mer summary histogram parsing accordingly.
 
 ### `Dependencies`
 

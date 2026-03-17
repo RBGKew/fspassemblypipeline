@@ -18,7 +18,9 @@ process KMER_STAT_SUMMARY {
     mkdir -p kmer_inputs statistics
 
     for hist in ${fastk_hists}; do
-        sample_id=\$(basename "\$hist" .hist)
+        sample_id=\$(basename "\$hist")
+        sample_id=\${sample_id%.hist.txt}
+        sample_id=\${sample_id%.hist}
         sample_dir="kmer_inputs/\$sample_id"
         mkdir -p "\$sample_dir"
         cp "\$hist" "\$sample_dir/\$sample_id.reads.kmer_freq.hist"
