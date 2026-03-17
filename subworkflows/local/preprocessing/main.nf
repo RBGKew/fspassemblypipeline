@@ -3,16 +3,17 @@
 //               You can also ask for help via your pull request or on the #subworkflows channel on the nf-core Slack workspace:
 //               https://nf-co.re/join
 
-include { FALCO as FALCO_RAW         } from '../../../modules/nf-core/falco/main'
-include { FALCO as FALCO_AFTER_FASTP } from '../../../modules/nf-core/falco/main'
-include { FASTP                      } from '../../../modules/nf-core/fastp/main'
-include { FASTK_FASTK                } from '../../../modules/nf-core/fastk/fastk/main'
-include { FASTK_HISTEX               } from '../../../modules/nf-core/fastk/histex/main'
-include { GENESCOPEFK               } from '../../../modules/nf-core/genescopefk/main'
-include { FALCO_QCSTAT_COMPILING     } from '../../../modules/local/falco_qcstat_compiling/main'
-include { FQSTAT                     } from '../../../modules/local/fqstat/main'
-include { FQSTAT_SUMMARY             } from '../../../modules/local/fqstat_summary/main'
-include { KMER_STAT_SUMMARY          } from '../../../modules/local/kmer_stat_summary/main'
+include { FALCO as FALCO_RAW            } from '../../../modules/nf-core/falco/main'
+include { FALCO as FALCO_AFTER_FASTP    } from '../../../modules/nf-core/falco/main'
+include { FASTP                         } from '../../../modules/nf-core/fastp/main'
+include { FASTK_FASTK                   } from '../../../modules/nf-core/fastk/fastk/main'
+include { FASTK_HISTEX                  } from '../../../modules/nf-core/fastk/histex/main'
+include { GENESCOPEFK as GENESCOPEFK_P1 } from '../../../modules/nf-core/genescopefk/main'
+include { GENESCOPEFK as GENESCOPEFK_P2 } from '../../../modules/nf-core/genescopefk/main'
+include { FALCO_QCSTAT_COMPILING        } from '../../../modules/local/falco_qcstat_compiling/main'
+include { FQSTAT                        } from '../../../modules/local/fqstat/main'
+include { FQSTAT_SUMMARY                } from '../../../modules/local/fqstat_summary/main'
+include { KMER_STAT_SUMMARY             } from '../../../modules/local/kmer_stat_summary/main'
 
 workflow PREPROCESSING {
 
@@ -90,11 +91,15 @@ workflow PREPROCESSING {
     )
     ch_versions = ch_versions.mix( FASTK_HISTEX.out.versions_fastk )
 
-    GENOMESCOPE2 (
+    GENESCOPEFK_P1 (
         FASTK_HISTEX.out.hist
     )
-    ch_versions = ch_versions.mix( GENOMESCOPE2.out.versions_genomescope2 )
+    ch_versions = ch_versions.mix( GENESCOPEFK_P1.out.versions_genomescopefk )
 
+    GENESCOPEFK_P2 (
+        FASTK_HISTEX.out.hist
+    )
+    ch_versions = ch_versions.mix( GENESCOPEFK_P2.out.versions_genomescopefk )
 // Prepare a mixed channel of FastK histograms and Genomescope summaries for KMER_STAT_SUMMARY.
     ch_fastk_hist_input = FASTK_HISTEX.out.hist
         .map { meta, hist -> hist }
