@@ -139,7 +139,8 @@ workflow PREPROCESSING {
     fq_stats               = FQSTAT.out.stats
     fq_stats_summary       = FQSTAT_SUMMARY.out.summary
     fastk_ktab             = FASTK_FASTK.out.ktab
-    fastk_hist             = FASTK_HISTEX.out.hist
+    fastk_hist             = FASTK_FASTK.out.hist
+    histex_txt             = FASTK_HISTEX.out.hist
     genomescope_summary    = GENOMESCOPE2.out.summary
     kmer_stats_summary     = KMER_STAT_SUMMARY.out.summary
     versions               = ch_versions
