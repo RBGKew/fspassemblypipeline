@@ -5,7 +5,8 @@
 
 include { FALCO as FALCO_RAW            } from '../../../modules/nf-core/falco/main'
 include { FALCO as FALCO_AFTER_FASTP    } from '../../../modules/nf-core/falco/main'
-include { FASTP                         } from '../../../modules/nf-core/fastp/main'
+include { FASTP as FASTP_TRIM           } from '../../../modules/nf-core/fastp/main'
+include { FASTP as FASTP_MERGE          } from '../../../modules/nf-core/fastp/main'
 include { FASTK_FASTK                   } from '../../../modules/nf-core/fastk/fastk/main'
 include { FASTK_HISTEX                  } from '../../../modules/nf-core/fastk/histex/main'
 include { GENESCOPEFK as GENESCOPEFK_P1 } from '../../../modules/nf-core/genescopefk/main'
@@ -29,19 +30,32 @@ workflow PREPROCESSING {
     ch_versions = ch_versions.mix( FALCO_RAW.out.versions )
 
     // FASTP expects [meta, reads, adapter_fasta].
-    ch_samplesheet_fastp = ch_samplesheet.map { meta, reads -> [ meta, reads, [] ] }
+    def fastp_adapter_fasta = params.fastp_adapter_fasta ? file(params.fastp_adapter_fasta, checkIfExists: true) : []
 
-// TODO: FASTP needs to add the path to adapter_fasta and specific usage.
-    FASTP (
-        ch_samplesheet_fastp,
+    // Step 1: quality trimming and filtering, keeping full trimmed R1/R2 output.
+    ch_samplesheet_fastp_trim = ch_samplesheet.map { meta, reads -> [ meta, reads, fastp_adapter_fasta ] }
+
+    FASTP_TRIM (
+        ch_samplesheet_fastp_trim,
+        false,
+        false,
+        false
+    )
+    ch_versions = ch_versions.mix( FASTP_TRIM.out.versions_fastp )
+
+    // Step 2: merge from trimmed reads while retaining unmerged and merged outputs.
+    ch_samplesheet_fastp_merge = FASTP_TRIM.out.reads.map { meta, reads -> [ meta, reads, [] ] }
+
+    FASTP_MERGE (
+        ch_samplesheet_fastp_merge,
         false,
         false,
         true
     )
-    ch_versions = ch_versions.mix( FASTP.out.versions_fastp )
+    ch_versions = ch_versions.mix( FASTP_MERGE.out.versions_fastp )
 
     FALCO_AFTER_FASTP (
-        FASTP.out.reads
+        FASTP_TRIM.out.reads
     )
     ch_versions = ch_versions.mix( FALCO_AFTER_FASTP.out.versions )
 
@@ -64,8 +78,8 @@ workflow PREPROCESSING {
     )
 
 // make a mixed channel for both R1R2 and merged reads to be processed by FQSTAT.
-    ch_fqstat_input = FASTP.out.reads
-        .mix( FASTP.out.reads_merged )
+    ch_fqstat_input = FASTP_MERGE.out.reads
+        .mix( FASTP_MERGE.out.reads_merged )
 
     FQSTAT (
         ch_fqstat_input
@@ -82,7 +96,7 @@ workflow PREPROCESSING {
     )
 // TO DO: only take trimmed R1 and R2 reads to this step. Check the module command.
     FASTK_FASTK (
-        FASTP.out.reads
+        FASTP_TRIM.out.reads
     )
     ch_versions = ch_versions.mix( FASTK_FASTK.out.versions_fastk )
 
@@ -117,8 +131,8 @@ workflow PREPROCESSING {
     )
 
     emit:
-    fastp_reads            = FASTP.out.reads // trimmed R1 && R2
-    fastp_reads_merged     = FASTP.out.reads_merged
+    fastp_reads            = FASTP_TRIM.out.reads // complete trimmed R1 && R2
+    fastp_reads_merged     = FASTP_MERGE.out.reads_merged
     falco_raw_html         = FALCO_RAW.out.html
     falco_after_fastp_html = FALCO_AFTER_FASTP.out.html
     falco_qc_stats         = FALCO_QCSTAT_COMPILING.out.stats
