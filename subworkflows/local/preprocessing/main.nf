@@ -90,8 +90,8 @@ workflow PREPROCESSING {
         ch_falco_qc_compiling_input
     )
 
-// make a mixed channel for both R1R2 and merged reads to be processed by FQSTAT.
-    ch_fqstat_input = FASTP_MERGE.out.reads
+// make a mixed channel for trimmed R1/R2 and merged reads to be processed by FQSTAT.
+    ch_fqstat_input = FASTP_TRIM.out.reads
         .mix( FASTP_MERGE.out.reads_merged )
 
     FQSTAT (

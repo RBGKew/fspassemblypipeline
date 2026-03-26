@@ -18,7 +18,7 @@ process FQSTAT {
     def fastq_args = fastq_file_list.collect { "\"${it}\"" }.join(' ')
     """
     for fq in ${fastq_args}; do
-        perl ${projectDir}/bin/fq_n50.pl "\$fq" > "${meta.id}_\$(basename "\$fq").stats"
+        zcat "\$fq" | perl ${projectDir}/bin/fq_n50.pl > "${meta.id}_\$(basename "\$fq").stats"
     done
     """
 }
