@@ -8,6 +8,7 @@ process KMER_STAT_SUMMARY {
 
     input:
     path(fastk_hists)
+    path(fastk_logs)
     path(genomescope_summaries)
 
     output:
@@ -25,6 +26,14 @@ process KMER_STAT_SUMMARY {
         sample_dir="kmer_inputs/\$sample_id"
         mkdir -p "\$sample_dir"
         cp "\$hist" "\$sample_dir/\$sample_id.reads.kmer_freq.hist"
+    done
+
+    for log in ${fastk_logs}; do
+        sample_id=\$(basename "\$log")
+        sample_id=\${sample_id%.fastK.log}
+        sample_dir="kmer_inputs/\$sample_id"
+        mkdir -p "\$sample_dir"
+        cp "\$log" "\$sample_dir/\$sample_id.fastK.log"
     done
 
     for summary in ${genomescope_summaries}; do
