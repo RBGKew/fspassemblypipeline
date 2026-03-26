@@ -1,0 +1,8 @@
+Mar-17 13:07:13.431 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.4
+Mar-17 13:07:13.442 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/nf-core/fastk/histex/tests/main.nf.test, --profile, conda]
+Mar-17 13:07:14.061 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.10.4
+Mar-17 13:07:14.062 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /Users/w.huang/fspassemblypipeline/nf-test.config...
+Mar-17 13:07:15.218 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 31 files from directory /Users/w.huang/fspassemblypipeline in 0.041 sec
+Mar-17 13:07:15.219 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 0 files containing tests.
+Mar-17 13:07:15.219 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: []
+Mar-17 13:07:15.220 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 0 tests to execute.

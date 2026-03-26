@@ -30,6 +30,7 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 11/03/2026 - Added FASTK_HISTEX module.
 17/03/2026 - Added FASTP parameter settings in nextflow.config to nf-core-style individual parameters.
 17/03/2026 - Added FASTP module argument construction to conf/modules.config and added FASTP-specific publishDir output path.
+26/03/2026 - Added nf-core-style configurable FastK/Histex parameters (`-v`, `-p`, `fastk_extra_args`, `-G`, `histex_extra_args`) to nextflow.config and nextflow_schema.json.
 
 ### `Fixed`
 
@@ -46,6 +47,7 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 13/03/2026 - Updated FASTK and GENESCOPEFK nf-core modules to emit log files and updated the modules from nf-core rather than making local changes.
 16/03/2026 - Updated GENOME_ASSEMBLY subworkflow to incorporate both GENESCOPEFK peak 1 and peak 2.
 17/03/2026 - Aligned FASTK_HISTEX outputs to `*.hist.txt` and updated downstream preprocessing outputs/metadata and k-mer summary histogram parsing accordingly.
+26/03/2026 - Updated FASTK_FASTK/FASTK_HISTEX module argument construction in conf/modules.config and set FastK `-p`/`-v` to be enabled by default to preserve required outputs.
 
 ### `Dependencies`
 

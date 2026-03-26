@@ -221,6 +221,26 @@
             "type": "integer",
             "default": 1
         },
+        "fastk_verbose": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastk_profile_output": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastk_extra_args": {
+            "type": "string",
+            "default": ""
+        },
+        "histex_g_output": {
+            "type": "boolean",
+            "default": true
+        },
+        "histex_extra_args": {
+            "type": "string",
+            "default": ""
+        },
         "spades_kmer_list": {
             "type": "string",
             "default": "auto"
