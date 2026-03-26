@@ -27,7 +27,7 @@ workflow PREPROCESSING {
     FALCO_RAW (
         ch_samplesheet
     )
-    ch_versions = ch_versions.mix( FALCO_RAW.out.versions )
+    ch_versions = ch_versions.mix( FALCO_RAW.out.versions_falco )
 
     // FASTP expects [meta, reads, adapter_fasta].
     def fastp_adapter_fasta = params.fastp_adapter_fasta ? file(params.fastp_adapter_fasta, checkIfExists: true) : []
@@ -57,7 +57,7 @@ workflow PREPROCESSING {
     FALCO_AFTER_FASTP (
         FASTP_TRIM.out.reads
     )
-    ch_versions = ch_versions.mix( FALCO_AFTER_FASTP.out.versions )
+    ch_versions = ch_versions.mix( FALCO_AFTER_FASTP.out.versions_falco )
 
     ch_falco_qc_compiling_input = FALCO_RAW.out.txt
         .flatMap { meta, txt_files ->
