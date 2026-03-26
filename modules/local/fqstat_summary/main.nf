@@ -23,8 +23,8 @@ process FQSTAT_SUMMARY {
 
     for stat in ${stats_args}; do
         stat_base=\$(basename "\$stat")
-        total_bp=\$(awk '\$1=="Total" {print \$2; exit}' "\$stat")
-        Len_avg=\$(awk '\$1=="Average" {print \$2; exit}' "\$stat")
+        total_bp=\$(awk '\$1=="Total:" {print \$2; exit}' "\$stat")
+        Len_avg=\$(awk '\$1=="Average:" {print \$2; exit}' "\$stat")
 
         if [[ "\$stat_base" == *merge.fq.gz.stats || "\$stat_base" == *merged.fastq.gz.stats ]]; then
             printf "%s\t%s\t%s\n" "\$stat_base" "\$total_bp" "\$Len_avg" >> ${merged_summary_file}
