@@ -5,6 +5,7 @@
 
 include { FALCO as FALCO_RAW            } from '../../../modules/nf-core/falco/main'
 include { FALCO as FALCO_AFTER_FASTP    } from '../../../modules/nf-core/falco/main'
+include { FALCO as FALCO_AFTER_MERGE    } from '../../../modules/nf-core/falco/main'
 include { FASTP as FASTP_TRIM           } from '../../../modules/nf-core/fastp/main'
 include { FASTP as FASTP_MERGE          } from '../../../modules/nf-core/fastp/main'
 include { FASTK_FASTK                   } from '../../../modules/nf-core/fastk/fastk/main'
@@ -58,6 +59,11 @@ workflow PREPROCESSING {
         FASTP_TRIM.out.reads
     )
     ch_versions = ch_versions.mix( FALCO_AFTER_FASTP.out.versions_falco )
+
+    FALCO_AFTER_MERGE (
+        FASTP_MERGE.out.reads_merged
+    )
+    ch_versions = ch_versions.mix( FALCO_AFTER_MERGE.out.versions_falco )
 
     ch_falco_qc_compiling_input = FALCO_RAW.out.txt
         .flatMap { meta, txt_files ->
@@ -121,7 +127,6 @@ workflow PREPROCESSING {
         .filter { it }
 
     ch_genomescope_summary_input = GENESCOPEFK_P1.out.summary
-        .mix( GENESCOPEFK_P2.out.summary )
         .map { meta, summary -> summary }
         .collect()
         .filter { it }
@@ -136,6 +141,7 @@ workflow PREPROCESSING {
     fastp_reads_merged     = FASTP_MERGE.out.reads_merged
     falco_raw_html         = FALCO_RAW.out.html
     falco_after_fastp_html = FALCO_AFTER_FASTP.out.html
+    falco_after_merge_html = FALCO_AFTER_MERGE.out.html
     falco_qc_stats         = FALCO_QCSTAT_COMPILING.out.stats
     fq_stats               = FQSTAT.out.stats
     fq_stats_summary       = FQSTAT_SUMMARY.out.summary
