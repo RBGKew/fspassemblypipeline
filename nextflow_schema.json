@@ -213,6 +213,61 @@
         }
     ],
     "properties": {
+        "fastp_trim_min_length": {
+            "type": "integer",
+            "default": 30
+        },
+        "fastp_trim_poly_g_min_len": {
+            "type": "integer",
+            "default": 8
+        },
+        "fastp_trim_front1": {
+            "type": "integer",
+            "default": 2
+        },
+        "fastp_trim_cut_window_size": {
+            "type": "integer",
+            "default": 3
+        },
+        "fastp_trim_cut_front": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_cut_tail": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_dedup": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_low_complexity_filter": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_complexity_threshold": {
+            "type": "integer",
+            "default": 15
+        },
+        "fastp_merge_min_length": {
+            "type": "integer",
+            "default": 30
+        },
+        "fastp_merge_overlap_len_require": {
+            "type": "integer",
+            "default": 20
+        },
+        "fastp_merge_overlap_diff_limit": {
+            "type": "integer",
+            "default": 2
+        },
+        "fastp_adapter_fasta": {
+            "type": ["string", "null"]
+        },
+        "fastp_extra_args": {
+            "type": "string",
+            "default": ""
+        },
         "fastk_kmer": {
             "type": "integer",
             "default": 17
