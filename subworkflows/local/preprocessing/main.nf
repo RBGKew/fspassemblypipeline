@@ -133,6 +133,11 @@ workflow PREPROCESSING {
         .collect()
         .filter { it }
 
+    ch_fastk_log_input = FASTK_FASTK.out.log
+        .map { meta, log -> log }
+        .collect()
+        .filter { it }
+
     ch_genomescope_summary_input = GENESCOPEFK_P1.out.summary
         .map { meta, summary -> summary }
         .collect()
@@ -140,6 +145,7 @@ workflow PREPROCESSING {
 
     KMER_STAT_SUMMARY (
         ch_fastk_hist_input,
+        ch_fastk_log_input,
         ch_genomescope_summary_input
     )
 
