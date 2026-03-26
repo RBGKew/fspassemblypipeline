@@ -3,6 +3,7 @@ process KMER_STAT_SUMMARY {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'oras://community.wave.seqera.io/library/python_pip_numpy_pandas:0f1c9045fe326238' :
         'community.wave.seqera.io/library/python_pip_numpy_pandas:0f1c9045fe326238' }"
 
     input:

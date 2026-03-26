@@ -108,19 +108,20 @@ workflow PREPROCESSING {
     GENESCOPEFK_P1 (
         FASTK_HISTEX.out.hist
     )
-    ch_versions = ch_versions.mix( GENESCOPEFK_P1.out.versions_genomescopefk )
+    ch_versions = ch_versions.mix( GENESCOPEFK_P1.out.versions_genescopefk )
 
     GENESCOPEFK_P2 (
         FASTK_HISTEX.out.hist
     )
-    ch_versions = ch_versions.mix( GENESCOPEFK_P2.out.versions_genomescopefk )
+    ch_versions = ch_versions.mix( GENESCOPEFK_P2.out.versions_genescopefk )
 // Prepare a mixed channel of FastK histograms and Genomescope summaries for KMER_STAT_SUMMARY.
     ch_fastk_hist_input = FASTK_HISTEX.out.hist
         .map { meta, hist -> hist }
         .collect()
         .filter { it }
 
-    ch_genomescope_summary_input = GENOMESCOPE2.out.summary
+    ch_genomescope_summary_input = GENESCOPEFK_P1.out.summary
+        .mix( GENESCOPEFK_P2.out.summary )
         .map { meta, summary -> summary }
         .collect()
         .filter { it }
@@ -141,7 +142,7 @@ workflow PREPROCESSING {
     fastk_ktab             = FASTK_FASTK.out.ktab
     fastk_hist             = FASTK_FASTK.out.hist
     histex_txt             = FASTK_HISTEX.out.hist
-    genomescope_summary    = GENOMESCOPE2.out.summary
+    genomescope_summary    = GENESCOPEFK_P1.out.summary.mix( GENESCOPEFK_P2.out.summary )
     kmer_stats_summary     = KMER_STAT_SUMMARY.out.summary
     versions               = ch_versions
 }

@@ -23,8 +23,8 @@ process GENESCOPEFK {
     task.ext.when == null || task.ext.when
 
     script:
-    // Exit if running this module with -profile conda / -profile mamba
-    if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
+    // Allow stub testing with conda/mamba, but block real execution.
+    if (!workflow.stubRun && workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "GENESCOPEFK module does not support Conda. Please use Docker / Singularity / Podman instead."
     }
 
