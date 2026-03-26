@@ -68,13 +68,20 @@ workflow PREPROCESSING {
     ch_falco_qc_compiling_input = FALCO_RAW.out.txt
         .flatMap { meta, txt_files ->
             def files = txt_files instanceof List ? txt_files : [txt_files]
-            files.collect { txt -> [ 'raw_reads_QC', txt ] }
+            files.collect { txt -> [ 'raw', txt ] }
         }
         .mix(
             FALCO_AFTER_FASTP.out.txt
                 .flatMap { meta, txt_files ->
                     def files = txt_files instanceof List ? txt_files : [txt_files]
-                    files.collect { txt -> [ 'after_fastp_QC', txt ] }
+                    files.collect { txt -> [ 'trimmed', txt ] }
+                }
+        )
+        .mix(
+            FALCO_AFTER_MERGE.out.txt
+                .flatMap { meta, txt_files ->
+                    def files = txt_files instanceof List ? txt_files : [txt_files]
+                    files.collect { txt -> [ 'merge', txt ] }
                 }
         )
         .groupTuple(by: 0)

@@ -6,7 +6,7 @@ summary_files=()
 
 for f in "${input_files[@]}"; do
 	[[ -e "$f" ]] || continue
-	if [[ "$f" == *_fastqc_data.txt ]]; then
+	if [[ "$f" == *_fastqc_data.txt || "$f" == *_data.txt ]]; then
 		fastqc_data_files+=("$f")
 	elif [[ "$f" == *_summary.txt || "$f" == *gz_summary.txt ]]; then
 		summary_files+=("$f")
@@ -20,11 +20,15 @@ if [[ ${#fastqc_data_files[@]} -eq 0 ]]; then
 			[[ -e "$f" ]] || continue
 			fastqc_data_files+=("$f")
 		done
+		for f in "$i"/*_data.txt; do
+			[[ -e "$f" ]] || continue
+			fastqc_data_files+=("$f")
+		done
 	done
 fi
 
 if [[ ${#fastqc_data_files[@]} -eq 0 ]]; then
-	echo "ERROR: No *fastqc_data.txt files found." >&2
+	echo "ERROR: No *_fastqc_data.txt or *_data.txt files found." >&2
 	exit 1
 fi
 
