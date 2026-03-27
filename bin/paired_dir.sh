@@ -1,4 +1,5 @@
 #!/bin/bash
+# Author: Wu Huang
 
 # Directory containing the fastq.gz files
 INPUT_DIR="InputDir"

@@ -1,3 +1,6 @@
+#!/bin/bash
+# Author: Wu Huang
+
 shopt -s nullglob
 
 input_files=("$@")

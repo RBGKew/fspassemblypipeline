@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Wu Huang
+
 """Extract key columns and classify k-mer peak shapes."""
 
 import argparse
