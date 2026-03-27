@@ -1,5 +1,3 @@
-// TODO nf-core: Once you have added the required tests, please run the following command to build this file:
-// nf-core subworkflows test preprocessing
 nextflow_workflow {
 
     name "Test Subworkflow PREPROCESSING"
@@ -9,38 +7,36 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_"
     tag "subworkflows/preprocessing"
-    // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
-    tag "samtools"
-    tag "samtools/sort"
-    tag "samtools/index"
 
-
-    // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
-    test("sarscov2 - bam - single_end") {
+    test("assets samplesheet - fastq - paired_end") {
+        options "-stub"
 
         when {
+            def samplesheetPath = "${projectDir}/assets/samplesheet.csv"
+            def rows = new File(samplesheetPath).readLines().findAll { it?.trim() }
+            assert rows.size() > 1 : "assets/samplesheet.csv has no data rows"
+
+            def cols = rows[1].split(',')
+            assert cols.size() >= 4 : "assets/samplesheet.csv row format is invalid"
+
+            def sampleId = cols[0].trim()
+            def r1Path = "${projectDir}/${cols[1].trim().replaceFirst('^\\./', '')}"
+            def r2Path = "${projectDir}/${cols[2].trim().replaceFirst('^\\./', '')}"
+
             workflow {
                 """
-                // TODO nf-core: define inputs of the workflow here. Example:
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
-                input[1] = [
-                    [ id:'genome' ],
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
+                input[0] = Channel.of([
+                    [ id: '${sampleId}', type: 'raw', single_end: false ],
+                    [
+                        file('${r1Path}', checkIfExists: true),
+                        file('${r2Path}', checkIfExists: true)
+                    ]
+                ])
                 """
             }
         }
         then {
             assert workflow.success
-            assertAll(
-                { assert snapshot(
-                    workflow.out
-                    //TODO nf-core: Add all required assertions to verify the test output.
-                ).match() }
-            )
         }
     }
 }

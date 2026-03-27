@@ -1,8 +1,14 @@
-Mar-17 13:07:13.431 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.4
-Mar-17 13:07:13.442 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/nf-core/fastk/histex/tests/main.nf.test, --profile, conda]
-Mar-17 13:07:14.061 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.10.4
-Mar-17 13:07:14.062 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /Users/w.huang/fspassemblypipeline/nf-test.config...
-Mar-17 13:07:15.218 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 31 files from directory /Users/w.huang/fspassemblypipeline in 0.041 sec
-Mar-17 13:07:15.219 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 0 files containing tests.
-Mar-17 13:07:15.219 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: []
-Mar-17 13:07:15.220 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 0 tests to execute.
+Mar-27 16:20:54.482 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.4
+Mar-27 16:20:54.492 [main] INFO  com.askimed.nf.test.App - Arguments: [test, subworkflows/local/preprocessing/tests/main.nf.test]
+Mar-27 16:20:55.046 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.10.4
+Mar-27 16:20:55.047 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /Users/w.huang/fspassemblypipeline/nf-test.config...
+Mar-27 16:20:56.315 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 32 files from directory /Users/w.huang/fspassemblypipeline in 0.938 sec
+Mar-27 16:20:56.316 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Mar-27 16:20:56.316 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/Users/w.huang/fspassemblypipeline/subworkflows/local/preprocessing/tests/main.nf.test]
+Mar-27 16:20:56.434 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
+Mar-27 16:20:56.434 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Mar-27 16:20:56.434 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow PREPROCESSING' from file '/Users/w.huang/fspassemblypipeline/subworkflows/local/preprocessing/tests/main.nf.test'.
+Mar-27 16:20:56.434 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'e9fe302d: assets samplesheet - fastq - paired_end'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Mar-27 16:21:02.784 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'e9fe302d: assets samplesheet - fastq - paired_end' finished. status: PASSED
+Mar-27 16:21:02.784 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow PREPROCESSING' finished. snapshot file: false, skipped tests: false, failed tests: false
+Mar-27 16:21:02.784 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 0 tests failed. Done!

@@ -1,7 +1,4 @@
-// TODO nf-core: If in doubt look at other nf-core/subworkflows to see how we are doing things! :)
-//               https://github.com/nf-core/modules/tree/master/subworkflows
-//               You can also ask for help via your pull request or on the #subworkflows channel on the nf-core Slack workspace:
-//               https://nf-co.re/join
+// Subworkflow implementation for read preprocessing and QC/statistics collation.
 
 include { FALCO as FALCO_RAW            } from '../../../modules/nf-core/falco/main'
 include { FALCO as FALCO_AFTER_FASTP    } from '../../../modules/nf-core/falco/main'
@@ -107,7 +104,6 @@ workflow PREPROCESSING {
     FQSTAT_SUMMARY (
         ch_fqstat_summary_input
     )
-// TO DO: only take trimmed R1 and R2 reads to this step. Check the module command.
     FASTK_FASTK (
         FASTP_TRIM.out.reads
     )
