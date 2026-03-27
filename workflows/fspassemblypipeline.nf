@@ -6,6 +6,7 @@
 
 include { GENOME_ASSEMBLY        } from '../subworkflows/local/genome_assembly/main'
 include { PREPROCESSING          } from '../subworkflows/local/preprocessing/main'
+include { MULTIQC                } from '../modules/nf-core/multiqc/main'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
