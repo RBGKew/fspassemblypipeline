@@ -138,15 +138,33 @@ workflow PREPROCESSING {
         .collect()
         .filter { it }
 
-    ch_genomescope_summary_input = GENESCOPEFK_P1.out.summary
+    ch_genomescope_p1_summary_input = GENESCOPEFK_P1.out.summary
         .map { meta, summary -> summary }
+        .collect()
+        .filter { it }
+
+    ch_genomescope_p2_summary_input = GENESCOPEFK_P2.out.summary
+        .map { meta, summary -> summary }
+        .collect()
+        .filter { it }
+
+    ch_genomescope_p1_log_input = GENESCOPEFK_P1.out.log
+        .map { meta, log -> log }
+        .collect()
+        .filter { it }
+
+    ch_genomescope_p2_log_input = GENESCOPEFK_P2.out.log
+        .map { meta, log -> log }
         .collect()
         .filter { it }
 
     KMER_STAT_SUMMARY (
         ch_fastk_hist_input,
         ch_fastk_log_input,
-        ch_genomescope_summary_input
+        ch_genomescope_p1_summary_input,
+        ch_genomescope_p2_summary_input,
+        ch_genomescope_p1_log_input,
+        ch_genomescope_p2_log_input
     )
 
     emit:
