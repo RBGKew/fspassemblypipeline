@@ -32,7 +32,7 @@ output:
       - "*.hist.txt":
           type: file
           description: A formatted histogram file
-          pattern: "*.hist.txt"
+          pattern: "*.hist"
           ontologies:
             - edam: http://edamontology.org/format_3475 # TSV
   versions_fastk:

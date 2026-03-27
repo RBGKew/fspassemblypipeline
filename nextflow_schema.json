@@ -265,8 +265,8 @@
             "type": ["string", "null"]
         },
         "fastp_extra_args": {
-            "type": "string",
-            "default": ""
+            "type": ["string", "null"],
+            "default": null
         },
         "fastk_kmer": {
             "type": "integer",
@@ -285,16 +285,16 @@
             "default": true
         },
         "fastk_extra_args": {
-            "type": "string",
-            "default": ""
+            "type": ["string", "null"],
+            "default": null
         },
         "histex_g_output": {
             "type": "boolean",
             "default": true
         },
         "histex_extra_args": {
-            "type": "string",
-            "default": ""
+            "type": ["string", "null"],
+            "default": null
         },
         "spades_kmer_list": {
             "type": "string",

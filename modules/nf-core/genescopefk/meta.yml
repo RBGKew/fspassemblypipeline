@@ -22,7 +22,7 @@ input:
         type: file
         description: A histogram formatted for GeneScope using the -G parameter
           from Fastk Histex
-        pattern: "*.hist.txt"
+        pattern: "*.hist"
         ontologies: []
 output:
   linear_plot:
