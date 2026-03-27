@@ -31,6 +31,8 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 17/03/2026 - Added FASTP parameter settings in nextflow.config to nf-core-style individual parameters.
 17/03/2026 - Added FASTP module argument construction to conf/modules.config and added FASTP-specific publishDir output path.
 26/03/2026 - Added nf-core-style configurable FastK/Histex parameters (`-v`, `-p`, `fastk_extra_args`, `-G`, `histex_extra_args`) to nextflow.config and nextflow_schema.json.
+26/03/2026 - Added dedicated `FALCO_AFTER_MERGE` preprocessing invocation and per-sample Falco publish layout under `falco/<sample>/{raw,trimmed,merge}`.
+27/03/2026 - Brought back missing `MULTIQC` module include in `workflows/fspassemblypipeline.nf` as it causes error I don't want to fix.
 
 ### `Fixed`
 
@@ -49,6 +51,11 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 17/03/2026 - Aligned FASTK_HISTEX outputs to `*.hist.txt` and updated downstream preprocessing outputs/metadata and k-mer summary histogram parsing accordingly.
 26/03/2026 - Updated FASTK_FASTK/FASTK_HISTEX module argument construction in conf/modules.config and set FastK `-p`/`-v` to be enabled by default to preserve required outputs.
 26/03/2026 - Updated falco to new topic version.
+26/03/2026 - Updated Falco QC statistics aggregation to include `raw`, `trimmed`, and `merge`, and renamed outputs to `QC_raw_result.txt`, `QC_trimmed_result.txt`, and `QC_merge_result.txt`.
+26/03/2026 - Updated `FQSTAT` to analyse trimmed R1/R2 plus merged reads; fixed `FQSTAT_SUMMARY` parsing of `Total:`/`Average:` fields.
+27/03/2026 - Updated `GENESCOPEFK_P1`/`GENESCOPEFK_P2` publish paths and runtime args to use separated `p1`/`p2` outputs with `-p 1 -k 17` and `-p 2 -k 17`.
+27/03/2026 - Simplified `KMER_STAT_SUMMARY` input staging and set `statistics_all.csv` `peak_positions` from `peak_1` `genescopefk.log` `kcov` while keeping the original three Python script execution order.
+27/03/2026 - Synced local `fastk/histex` and `genescopefk` nf-core module copies and aligned schema defaults for `fastp_extra_args`, `fastk_extra_args`, and `histex_extra_args` with lint expectations.
 
 ### `Dependencies`
 
