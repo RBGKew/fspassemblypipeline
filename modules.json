@@ -5,11 +5,6 @@
         "https://github.com/nf-core/modules.git": {
             "modules": {
                 "nf-core": {
-                    "abyss/abysspe": {
-                        "branch": "master",
-                        "git_sha": "380cb90926b8c28558cb11479da5ff45bc4f1c5d",
-                        "installed_by": ["modules"]
-                    },
                     "busco/busco": {
                         "branch": "master",
                         "git_sha": "56925dff3062ca9387de65dd763568916b562124",
@@ -17,12 +12,17 @@
                     },
                     "falco": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
+                        "git_sha": "b2f164ca59b14d6e9ed2dd2a99fa015085396faf",
                         "installed_by": ["modules"]
                     },
                     "fastk/fastk": {
                         "branch": "master",
-                        "git_sha": "3bed0255027a76609032ebc321465c94207ef8ed",
+                        "git_sha": "4a2e3a7b7af922aa5b94b00c2e78175be15787a2",
+                        "installed_by": ["modules"]
+                    },
+                    "fastk/histex": {
+                        "branch": "master",
+                        "git_sha": "1838663f8c38ccd7833be0df0e53a26b7c72b567",
                         "installed_by": ["modules"]
                     },
                     "fastp": {
@@ -35,9 +35,14 @@
                         "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
                         "installed_by": ["modules"]
                     },
-                    "kmergenie": {
+                    "genescopefk": {
                         "branch": "master",
-                        "git_sha": "a035704d396cf4a22a8e28dfc9b3b371cf1aef05",
+                        "git_sha": "0110646d0f733d87d8996260cf87d91b7ea2651c",
+                        "installed_by": ["modules"]
+                    },
+                    "genomescope2": {
+                        "branch": "master",
+                        "git_sha": "edc431ff96ebea772cc81ed8b1b15df6928a0ff8",
                         "installed_by": ["modules"]
                     },
                     "megahit": {

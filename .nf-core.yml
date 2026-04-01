@@ -1,23 +1,26 @@
+repository_type: pipeline
+
+nf_core_version: 3.5.2
+
 lint:
   files_exist:
     - conf/igenomes.config
     - conf/igenomes_ignored.config
-  files_unchanged:
+    - .github/PULL_REQUEST_TEMPLATE.md
     - assets/nf-core-fspassemblypipeline_logo_light.png
-    - docs/images/nf-core-fspassemblypipeline_logo_light.png
-nf_core_version: 3.5.2
-repository_type: pipeline
+    - docs/images/nf-core-fspassemblypipeline_logo_dark.png
+
 template:
-  author: Lia Obinu, Niall Garvey, Wu Huang
+  org: nf-core
+  name: fspassemblypipeline
   description: Genome assembly pipeline for the Fungarium Sequencing Project, designed
     to process and assemble genomic data from fungal species, enabling high-quality
     reference genomes for research and biodiversity studies.
-  force: false
-  is_nfcore: true
-  name: fspassemblypipeline
-  org: nf-core
+  author: Lia Obinu, Niall Garvey, Wu Huang
+  version: 1.0.0dev
+  force: true
   outdir: .
   skip_features:
     - igenomes
     - gpu
-  version: 1.0.0dev
+  is_nfcore: true

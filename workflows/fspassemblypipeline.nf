@@ -72,7 +72,9 @@ workflow FSPASSEMBLYPIPELINE {
             "${process}:\n${tool_versions.join('\n')}"
         }
 
-    softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+    def ch_versions_files = ch_versions.filter { it instanceof Path }
+
+    softwareVersionsToYAML(ch_versions_files.mix(topic_versions.versions_file))
         .mix(topic_versions_string)
         .collectFile(
             storeDir: "${params.outdir}/pipeline_info",
