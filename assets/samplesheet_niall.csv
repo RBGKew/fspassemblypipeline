@@ -1,0 +1,5 @@
+sample,file_1,file_2,type,fasta,taxid
+sim_Com_5_10k_cov60,./assets/dataset/sim_Com_5_10k_cov60_R1.fq.gz,./assets/dataset/sim_Com_5_10k_cov60_R2.fq.gz,raw,,
+sim_Com_5_100k_cov40,./assets/dataset/sim_Com_5_100k_cov40_R1.fq.gz,./assets/dataset/sim_Com_5_100k_cov40_R2.fq.gz,raw,,
+sim_Com_5_5M_cov20_cleaned,./assets/dataset/sim_Com_5_5M_cov20/sim_Com_5_5M_cov20_trimmed.R1.fq.gz,./assets/dataset/sim_Com_5_5M_cov20/sim_Com_5_5M_cov20_trimmed.R2.fq.gz,cleaned,,
+sim_Com_5_5M_cov20_bam,./assets/dataset/sim_Com_5_5M_cov20/Com_5_5M_cov20.bam,,bam,./assets/dataset/sim_Com_5_5M_cov20/Com_5_5M.fa.gz,425011

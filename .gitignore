@@ -8,8 +8,5 @@ testing*
 *.pyc
 .nf-test*
 null/
-tiara-trial/**
-fcs-gx_trial/**
 out_**
-assets/
 preprocessing_only.nf

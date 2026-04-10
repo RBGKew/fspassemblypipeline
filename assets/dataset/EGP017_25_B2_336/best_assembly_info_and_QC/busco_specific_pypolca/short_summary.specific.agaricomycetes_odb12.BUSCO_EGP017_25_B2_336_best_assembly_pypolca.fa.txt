@@ -1,0 +1,30 @@
+# BUSCO version is: 6.0.0 
+# The lineage dataset is: agaricomycetes_odb12 (Creation date: 2025-07-01, number of genomes: 76, number of BUSCOs: 3398)
+# Summarized benchmarking in BUSCO notation for file /home/lobinu/scratch/FSP_assembly_benchmarking/aUN_rerun_L_results/assemblies/EGP017_25_B2_336/EGP017_25_B2_336_best_assembly_pypolca.fa
+# BUSCO was run in mode: euk_genome_min
+# Gene predictor used: miniprot
+
+	***** Results: *****
+
+	C:0.0%[S:0.0%,D:0.0%],F:0.0%,M:100.0%,n:3398	   
+	0	Complete BUSCOs (C)			   
+	0	Complete and single-copy BUSCOs (S)	   
+	0	Complete and duplicated BUSCOs (D)	   
+	0	Fragmented BUSCOs (F)			   
+	3398	Missing BUSCOs (M)			   
+	3398	Total BUSCO groups searched		   
+
+Assembly Statistics:
+	98	Number of scaffolds
+	98	Number of contigs
+	42134	Total length
+	0.000%	Percent gaps
+	481	Scaffold N50
+	481	Contigs N50
+
+
+Dependencies and versions:
+	hmmsearch: 3.4
+	bbtools: None
+	miniprot_index: 0.18-r281
+	miniprot_align: 0.18-r281

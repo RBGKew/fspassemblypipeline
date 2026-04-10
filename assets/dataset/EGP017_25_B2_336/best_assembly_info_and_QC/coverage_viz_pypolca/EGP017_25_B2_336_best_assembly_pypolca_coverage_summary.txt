@@ -1,0 +1,31 @@
+Coverage Analysis Summary - EGP017_25_B2_336 (Best assembly improved with pypolca)
+============================================================
+
+sample: EGP017_25_B2_336
+assembler: Best assembly improved with pypolca
+total_contigs: 98
+contigs_under_250bp: 27
+contigs_under_250bp_percent: 27.55
+contigs_250bp_to_1kb: 68
+contigs_250bp_to_1kb_percent: 69.39
+contigs_over_1kb: 3
+contigs_over_1kb_percent: 3.06
+total_bases: 42134
+mean_coverage: 382.22
+weighted_mean_coverage: 92.43
+median_coverage: 5.97
+peak_coverage: 16267.20
+min_coverage: 1.00
+std_coverage: 1804.80
+overall_coverage_pct: 99.72
+longest_contig: 4880
+shortest_contig: 79
+mean_base_quality: 36.07
+median_base_quality: 36.30
+mean_mapping_quality: 42.82
+median_mapping_quality: 57.55
+total_reads: 2313935
+mapped_reads: 102853
+unmapped_reads: 2211082
+mapping_rate: 4.44
+properly_paired: 100132
