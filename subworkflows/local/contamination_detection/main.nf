@@ -6,16 +6,16 @@ include { COMPARISON         } from '../../../modules/local/comparison/main'
 workflow CONTAMINATION_DETECTION {
 
     take:
-    ch_fasta            // channel: [val(meta), path(fasta)] - genome assemblies
+    ch_assemblies       // channel: [val(meta), path(assembly)] - genome assemblies (FASTA or BAM files)
     ch_ramdisk_path     // value: ramdisk path or empty list
     ch_db_path          // value: database path
    
     main:
     // Run Tiara classification
-    TIARA_TIARA(ch_fasta)
+    TIARA_TIARA(ch_assemblies)
 
     // Prepare input for FCS-GX: use per-sample taxon_id from metadata, fall back to global params.taxid
-    ch_fcs_gx = ch_fasta.map { meta, assembly -> 
+    ch_fcs_gx = ch_assemblies.map { meta, assembly -> 
         def taxid = meta.taxon_id ?: params.taxid
         [meta, taxid, assembly]
     }

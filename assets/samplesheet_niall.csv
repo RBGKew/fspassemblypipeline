@@ -1,5 +1,2 @@
 sample,file_1,file_2,type,fasta,taxid
-sim_Com_5_10k_cov60,./assets/dataset/sim_Com_5_10k_cov60_R1.fq.gz,./assets/dataset/sim_Com_5_10k_cov60_R2.fq.gz,raw,,
-sim_Com_5_100k_cov40,./assets/dataset/sim_Com_5_100k_cov40_R1.fq.gz,./assets/dataset/sim_Com_5_100k_cov40_R2.fq.gz,raw,,
-sim_Com_5_5M_cov20_cleaned,./assets/dataset/sim_Com_5_5M_cov20/sim_Com_5_5M_cov20_trimmed.R1.fq.gz,./assets/dataset/sim_Com_5_5M_cov20/sim_Com_5_5M_cov20_trimmed.R2.fq.gz,cleaned,,
-sim_Com_5_5M_cov20_bam,./assets/dataset/sim_Com_5_5M_cov20/Com_5_5M_cov20.bam,,bam,./assets/dataset/sim_Com_5_5M_cov20/Com_5_5M.fa.gz,425011
+EGP017_25_B2_336,./assets/dataset/EGP017_25_B2_336/best_assembly_info_and_QC/samtools_pypolca/EGP017_25_B2_336_best_assembly_pypolca_sorted.bam,,bam,./assets/dataset/EGP017_25_B2_336/EGP017_25_B2_336_best_assembly.fa.gz,139355

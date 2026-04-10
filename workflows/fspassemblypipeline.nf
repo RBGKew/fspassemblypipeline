@@ -24,7 +24,7 @@ workflow FSPASSEMBLYPIPELINE {
     take:
     ch_samplesheet // channel: reads for preprocessing/assembly [[meta], [fastq files]]
     ch_fasta       // channel: genome assemblies for contamination detection [[meta], fasta]
-    ch_bam         // channel: BAM files for processing [[meta], bam]
+    ch_bam         // channel: BAM files from workflow emits or other sources [[meta], bam]
 
     main:
 
@@ -34,13 +34,15 @@ workflow FSPASSEMBLYPIPELINE {
     //
     // SUBWORKFLOW: Run PREPROCESSING on raw reads only
     //
-    // Branch samplesheet by type (raw vs cleaned)
+    // Branch samplesheet by type (raw vs cleaned vs bam)
     ch_samplesheet
         .branch { meta, files ->
             raw: meta.type == 'raw'
                 return [meta, files]
             cleaned: meta.type == 'cleaned'
                 return [meta, files]
+            bam: meta.type == 'bam'
+                return [meta, files]    
         }
         .set { ch_reads }
 
@@ -60,23 +62,20 @@ workflow FSPASSEMBLYPIPELINE {
 
     //
     // SUBWORKFLOW: Contamination Detection
-    // Process genome assemblies from the fasta channel
+    // Process genome assemblies from three sources:
+    // 1. FASTA files (ch_fasta)
+    // 2. BAM files from samplesheet (ch_reads.bam)
+    // 3. BAM files from workflow emits (ch_bam)
     //
     CONTAMINATION_DETECTION (
-        ch_fasta,                    // Use the fasta channel from PIPELINE_INITIALISATION
+        ch_fasta
+            .mix(ch_reads.bam)    // BAMs from samplesheet with type == 'bam'
+            .mix(ch_bam),         // BAMs from workflow outputs or other sources
         params.ramdisk_path ?: [],
         params.db_path
     )
     ch_versions = ch_versions.mix(CONTAMINATION_DETECTION.out.versions)
-
-    //
-    // TODO: Add BAM processing subworkflow here
-    //
-    // BAM_PROCESSING (
-    //     ch_bam
-    // )
-    // ch_versions = ch_versions.mix(BAM_PROCESSING.out.versions)
-
+    
     //
     // Collate and save software versions
     //

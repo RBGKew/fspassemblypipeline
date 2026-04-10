@@ -226,7 +226,7 @@
         },
         "ramdisk_path": {
             "type": "string"
-        },  
+        },
         "fastp_trim_min_length": {
             "type": "integer",
             "default": 30

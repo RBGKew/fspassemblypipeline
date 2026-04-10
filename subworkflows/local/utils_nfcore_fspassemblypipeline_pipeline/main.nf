@@ -115,6 +115,7 @@ workflow PIPELINE_INITIALISATION {
             ]
             return [genome_meta, file(fasta)]
         
+        
         // BAM files
         bam: meta.type == 'bam' && bam
             return [meta, file(bam)]
@@ -152,7 +153,7 @@ workflow PIPELINE_INITIALISATION {
 
     emit:
     samplesheet = ch_samplesheet  // For PREPROCESSING + GENOME_ASSEMBLY
-    fasta = ch_fasta               // For CONTAMINATION_DETECTION
+    assemblies = ch_assemblies   // Changed from 'fasta'
     bam = ch_bam                   // For BAM processing
     versions = ch_versions    
 }
