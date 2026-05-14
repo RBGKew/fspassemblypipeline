@@ -388,7 +388,8 @@
             "default": "odb12"
         },
         "lineages_list_file": {
-            "type": "string"
+            "type": "string",
+            "default": "./assets/fungi_busco_lineages.txt"
         },
         "skip_manual_strategy": {
             "type": "boolean"
