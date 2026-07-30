@@ -204,5 +204,251 @@
         {
             "$ref": "#/$defs/generic_options"
         }
-    ]
+    ],
+    "properties": {
+        "fastp_trim_min_length": {
+            "type": "integer",
+            "default": 30
+        },
+        "fastp_trim_poly_g_min_len": {
+            "type": "integer",
+            "default": 8
+        },
+        "fastp_trim_front1": {
+            "type": "integer",
+            "default": 2
+        },
+        "fastp_trim_cut_window_size": {
+            "type": "integer",
+            "default": 3
+        },
+        "fastp_trim_cut_front": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_cut_tail": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_dedup": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_low_complexity_filter": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastp_trim_complexity_threshold": {
+            "type": "integer",
+            "default": 15
+        },
+        "fastp_merge_min_length": {
+            "type": "integer",
+            "default": 30
+        },
+        "fastp_merge_overlap_len_require": {
+            "type": "integer",
+            "default": 20
+        },
+        "fastp_merge_overlap_diff_limit": {
+            "type": "integer",
+            "default": 2
+        },
+        "fastp_adapter_fasta": {
+            "type": ["string", "null"]
+        },
+        "fastp_extra_args": {
+            "type": ["string", "null"]
+        },
+        "fastk_kmer": {
+            "type": "integer",
+            "default": 17
+        },
+        "fastk_t": {
+            "type": "integer",
+            "default": 1
+        },
+        "fastk_verbose": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastk_profile_output": {
+            "type": "boolean",
+            "default": true
+        },
+        "fastk_extra_args": {
+            "type": ["string", "null"]
+        },
+        "histex_g_output": {
+            "type": "boolean",
+            "default": true
+        },
+        "histex_extra_args": {
+            "type": ["string", "null"]
+        },
+        "spades_kmer_list": {
+            "type": "string",
+            "default": "auto"
+        },
+        "spades_extra_args": {
+            "type": "string",
+            "default": "--only-assembler"
+        },
+        "megahit_kmer_list": {
+            "type": "string",
+            "default": "21,29,39,59,79,99,119,141"
+        },
+        "megahit_extra_args": {
+            "type": "string",
+            "default": "--no-mercy --min-count 3"
+        },
+        "minia_extra_args": {
+            "type": "string"
+        },
+        "minia_kmer": {
+            "type": "integer",
+            "default": 21
+        },
+        "busco_mode": {
+            "type": "string",
+            "default": "genome"
+        },
+        "busco_lineage": {
+            "type": "string",
+            "default": "fungi_odb12"
+        },
+        "busco_lineages_path": {
+            "type": "string",
+            "default": "/home/lobinu/git_repos/fspassemblypipeline/data"
+        },
+        "busco_config_file": {
+            "type": "string"
+        },
+        "busco_clean_intermediates": {
+            "type": "boolean"
+        },
+        "busco_extra_args": {
+            "type": "string",
+            "default": "--offline"
+        },
+        "quast_extra_args": {
+            "type": "string",
+            "default": "--min-contig 250"
+        },
+        "abyss_kmer": {
+            "type": "integer",
+            "default": 21
+        },
+        "abyss_extra_args": {
+            "type": "string"
+        },
+        "kmergenie_largest_kmer": {
+            "type": "integer",
+            "default": 121
+        },
+        "kmergenie_smallest_kmer": {
+            "type": "integer",
+            "default": 15
+        },
+        "sparseassembler_kmer": {
+            "type": "integer",
+            "default": 21
+        },
+        "sparseassembler_genome_size": {
+            "type": "integer",
+            "default": 150000000
+        },
+        "sparseassembler_scaffold": {
+            "type": "integer",
+            "default": 1
+        },
+        "sparseassembler_expected_coverage": {
+            "type": "integer",
+            "default": 10
+        },
+        "sparseassembler_extra_args": {
+            "type": "string",
+            "default": "Scaffold 1 g 10 LD 0 NodeCovTh 1 EdgeCovTh 0"
+        },
+        "db_path": {
+            "type": "string"
+        },
+        "ramdisk_path": {
+            "type": "string"
+        },
+        "busco_db_extension": {
+            "type": "string",
+            "default": "odb12"
+        },
+        "lineages_list_file": {
+            "type": "string",
+            "default": "./assets/fungi_busco_lineages.txt"
+        },
+        "skip_manual_strategy": {
+            "type": "boolean"
+        },
+        "skip_kmergenie_strategy": {
+            "type": "boolean"
+        },
+        "skip_reads_length_strategy": {
+            "type": "boolean"
+        },
+        "skip_spades": {
+            "type": "boolean"
+        },
+        "skip_megahit": {
+            "type": "boolean"
+        },
+        "skip_minia": {
+            "type": "boolean"
+        },
+        "skip_abyss": {
+            "type": "boolean"
+        },
+        "skip_sparseassembler": {
+            "type": "boolean"
+        },
+        "use_paired_reads": {
+            "type": "boolean",
+            "default": true
+        },
+        "use_merged_reads": {
+            "type": "boolean",
+            "default": true
+        },
+        "pypolca_extra_args": {
+            "type": "string",
+            "default": "--careful"
+        },
+        "skip_masurca": {
+            "type": "boolean"
+        },
+        "masurca_fragment_mean": {
+            "type": "integer",
+            "default": 100
+        },
+        "masurca_fragment_stdev": {
+            "type": "integer",
+            "default": 50
+        },
+        "masurca_kmer_size": {
+            "type": "string",
+            "default": "auto"
+        },
+        "masurca_ca_parameters": {
+            "type": "string",
+            "default": "cgwErrorRate=0.15"
+        },
+        "masurca_jf_size": {
+            "type": "integer",
+            "default": 300000000
+        },
+        "taxdump": {
+            "type": "string"
+        },
+        "min_contig_size": {
+            "type": "integer",
+            "default": 1000
+        }
+    }
 }

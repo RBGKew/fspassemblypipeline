@@ -1,0 +1,185 @@
+{
+    "sarscov2 - merged + unmerged ": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.scaffolds.fa.gz:md5,080341f371040d2fa71f8a9d8e604711"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.contigs.fa.gz:md5,080341f371040d2fa71f8a9d8e604711"
+                ]
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.assembly.gfa.gz:md5,89590a7fd6b5bf06dd49bea89433ac53"
+                ]
+            ],
+            [
+                [
+                    "SPADES_MERGED",
+                    "spades",
+                    "4.1.0"
+                ]
+            ]
+        ],
+        "timestamp": "2026-06-23T14:31:29.308518183",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    },
+    "sarscov2 - pe - stub ": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.scaffolds.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.contigs.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.transcripts.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gene_clusters.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.assembly.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.warnings.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.spades.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "7": [
+                    [
+                        "SPADES_MERGED",
+                        "spades",
+                        "4.1.0"
+                    ]
+                ],
+                "contigs": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.contigs.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "gene_clusters": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gene_clusters.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "gfa": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.assembly.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "log": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.spades.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "scaffolds": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.scaffolds.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "transcripts": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.transcripts.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "versions_spades": [
+                    [
+                        "SPADES_MERGED",
+                        "spades",
+                        "4.1.0"
+                    ]
+                ],
+                "warnings": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.warnings.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-23T14:31:36.410668988",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    }
+}

@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: "PREPROCESSING"
+description: Perform raw-read QC, adapter/quality trimming, merged-read generation, and k-mer profiling.
+keywords:
+  - qc
+  - reads
+  - fastp
+  - falco
+  - fastk
+  - genescopefk
+components:
+  - nf-core/falco
+  - nf-core/fastp
+  - nf-core/fastk/fastk
+  - nf-core/fastk/histex
+  - nf-core/genescopefk
+input:
+  - ch_samplesheet:
+      type: file
+      description: |
+        Input channel of raw reads and metadata.
+        Structure: [ val(meta), path(reads) ]
+      pattern: "*.{fastq,fq}.gz"
+output:
+  - fastp_reads:
+      type: file
+      description: |
+        Trimmed reads from FASTP.
+        Structure: [ val(meta), path(reads) ]
+      pattern: "*.fastp.fastq.gz"
+  - fastp_reads_merged:
+      type: file
+      description: |
+        Merged reads from FASTP.
+        Structure: [ val(meta), path(reads_merged) ]
+      pattern: "*.merged.fastq.gz"
+  - falco_raw_html:
+      type: file
+      description: |
+        Falco HTML reports for raw reads.
+        Structure: [ val(meta), path(html) ]
+      pattern: "*.html"
+  - falco_after_fastp_html:
+      type: file
+      description: |
+        Falco HTML reports for FASTP-processed reads.
+        Structure: [ val(meta), path(html) ]
+      pattern: "*.html"
+  - falco_after_merge_html:
+      type: file
+      description: |
+        Falco HTML reports for merged reads.
+        Structure: [ val(meta), path(html) ]
+      pattern: "*.html"
+  - fastk_hist:
+      type: file
+      description: |
+        FastK histogram files.
+        Structure: [ val(meta), path("*.hist") ]
+      pattern: "*.hist"
+  - histex_txt:
+      type: file
+      description: |
+        Histograms reformatted by FASTK_HISTEX.
+        Structure: [ val(meta), path("*.hist.txt") ]
+      pattern: "*.hist.txt"
+  - fastk_ktab:
+      type: file
+      description: |
+        FastK k-table files.
+        Structure: [ val(meta), path("*.ktab*") ]
+      pattern: "*.ktab*"
+  - genescopefk_summary:
+      type: file
+      description: |
+        GeneScopeFK summary reports.
+        Structure: [ val(meta), path("*_summary.txt") ]
+      pattern: "*_summary.txt"
+  - versions:
+      type: file
+      description: |
+        Aggregated software version information from modules.
+      pattern: "versions.yml"
+authors:
+  - "@Hazelhuangup"
+maintainers:
+  - "@Hazelhuangup"

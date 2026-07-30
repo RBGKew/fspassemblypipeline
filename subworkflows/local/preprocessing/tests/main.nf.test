@@ -1,0 +1,41 @@
+nextflow_workflow {
+
+    name "Test Subworkflow PREPROCESSING"
+    script "../main.nf"
+    workflow "PREPROCESSING"
+
+    tag "subworkflows"
+    tag "subworkflows_"
+    tag "subworkflows/preprocessing"
+    test("assets samplesheet - fastq - paired_end") {
+        options "-stub"
+
+        when {
+            def samplesheetPath = "${projectDir}/assets/samplesheet.csv"
+            def rows = new File(samplesheetPath).readLines().findAll { it?.trim() }
+            assert rows.size() > 1 : "assets/samplesheet.csv has no data rows"
+
+            def cols = rows[1].split(',')
+            assert cols.size() >= 4 : "assets/samplesheet.csv row format is invalid"
+
+            def sampleId = cols[0].trim()
+            def r1Path = "${projectDir}/${cols[1].trim().replaceFirst('^\\./', '')}"
+            def r2Path = "${projectDir}/${cols[2].trim().replaceFirst('^\\./', '')}"
+
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id: '${sampleId}', type: 'raw', single_end: false ],
+                    [
+                        file('${r1Path}', checkIfExists: true),
+                        file('${r2Path}', checkIfExists: true)
+                    ]
+                ])
+                """
+            }
+        }
+        then {
+            assert workflow.success
+        }
+    }
+}
