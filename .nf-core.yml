@@ -9,7 +9,7 @@ lint:
     - .gitignore
   template_strings:
     - assets/dataset/EGP017_25_B2_336/best_assembly_info_and_QC/samtools_pypolca/EGP017_25_B2_336_best_assembly_pypolca_sorted.bam
-nf_core_version: 4.0.2
+nf_core_version: 4.1.0
 repository_type: pipeline
 template:
   author: Lia Obinu, Niall Garvey, Wu Huang, Chris Wyatt, Fernando Duarte Frutos
