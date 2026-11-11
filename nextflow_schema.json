@@ -325,7 +325,8 @@
             "type": "string"
         },
         "busco_clean_intermediates": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": true
         },
         "busco_extra_args": {
             "type": "string",
@@ -452,6 +453,9 @@
         "min_contig_size": {
             "type": "integer",
             "default": 1000
+        },
+        "kmergenie_extra_args": {
+            "type": "string"
         }
     }
 }

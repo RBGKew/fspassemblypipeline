@@ -4,6 +4,7 @@ include { BUSCO_BUSCO                                      } from '../../../modu
 include { BUSCO_BUSCO as BUSCO_SPECIFIC                    } from '../../../modules/nf-core/busco/busco/main'
 include { MERQURYFK_MERQURYFK                              } from '../../../modules/nf-core/merquryfk/merquryfk/main'
 include { QUAST                                            } from '../../../modules/nf-core/quast/main'
+include { EXTRACTDRAFTMETRICS                              } from '../../../modules/local/extractdraftmetrics/main'
 include { SELECTBESTASSEMBLY                               } from '../../../modules/local/selectbestassembly/main'
 include { PYPOLCA_RUN                                      } from '../../../modules/nf-core/pypolca/run/main'
 include { BUSCO_BUSCO as BUSCO_FINAL                       } from '../../../modules/nf-core/busco/busco/main'
@@ -17,7 +18,7 @@ include { SAMTOOLS_FAIDX                                   } from '../../../modu
 include { SAMTOOLS_COVERAGE                                } from '../../../modules/nf-core/samtools/coverage/main'
 include { SAMTOOLS_FLAGSTAT                                } from '../../../modules/nf-core/samtools/flagstat/main'
 include { COVERAGEVIZ                                      } from '../../../modules/local/coverageviz/main'
-include { EXTRACTASSEMBLYMETRICS                            } from '../../../modules/local/extractassemblymetrics/main'
+include { EXTRACTASSEMBLYMETRICS                           } from '../../../modules/local/extractassemblymetrics/main'
 
 workflow SELECT_BEST_ASSEMBLY_AND_QC {
 
@@ -110,6 +111,32 @@ workflow SELECT_BEST_ASSEMBLY_AND_QC {
     def ch_quast_input = ch_draft_assemblies_mapped_to_id.groupTuple( by: 0 ).map { sample_id, metas, assemblies -> [ [id: sample_id], assemblies ]}
 
     QUAST ( ch_quast_input,[[],[]], [[],[]] ) // no reference fasta or gff for quast
+
+    // Create a channel with the quast results indexed by sample id
+    def ch_quast_by_id = QUAST.out.results.map { meta, res -> [ meta.id, res ] }
+
+    // Join all per-sample draft QC outputs by meta.id
+    def ch_drafts_metrics_input = BUSCO_BUSCO.out.short_summaries_txt
+        .join(BUSCO_SPECIFIC.out.short_summaries_txt, by: 0).view { "joined busco general and specific: ${it}" }
+        .join(MERQURYFK_MERQURYFK.out.qv, by: 0).view { "joined busco and merqury qv: ${it}" }
+        .join(MERQURYFK_MERQURYFK.out.stats, by: 0).view { "joined busco and merqury stats: ${it}" }
+        .map { meta, busco_gen, busco_spec, qv, comp -> [ meta.id, meta, busco_gen, busco_spec, qv, comp ] }
+        .combine(ch_quast_by_id, by: 0).view { "joined with quast: ${it}" }
+        .map { id, meta, busco_gen, busco_spec, qv, comp, quast ->
+            [ meta, busco_gen, busco_spec, quast, qv, comp ]
+        }
+        .view {"final channel: ${it}" }
+
+    EXTRACTDRAFTMETRICS( ch_drafts_metrics_input )
+
+    // Merge all per-sample rows into one CSV (collectFile handles the header)
+    def ch_drafts_metrics = EXTRACTDRAFTMETRICS.out.metrics_row.collectFile(
+        name: 'drafts_metrics.tsv',
+        keepHeader: true,
+        skip: 1,  // skip header in all but first file
+        sort: true, // sort by sample id
+        storeDir: "${params.outdir}/genome_assembly"
+    )
 
 // =================== Select best assembly =======================
 
@@ -325,6 +352,7 @@ workflow SELECT_BEST_ASSEMBLY_AND_QC {
     busco_full_table_specific                            = BUSCO_SPECIFIC.out.full_table
     merquryfk_completeness_stats                         = MERQURYFK_MERQURYFK.out.stats
     quast_results                                        = QUAST.out.results
+    drafts_metrics                                       = ch_drafts_metrics
 
     // Selected best assembly and its QC
     best_assembly_label                                  = SELECTBESTASSEMBLY.out.best_assembly_label
