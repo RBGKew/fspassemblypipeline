@@ -1,6 +1,8 @@
 {
     "name": "nf-core/fspassemblypipeline",
     "homePage": "https://github.com/nf-core/fspassemblypipeline",
+    "name": "nf-core/fspassemblypipeline",
+    "homePage": "https://github.com/nf-core/fspassemblypipeline",
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {
@@ -132,6 +134,7 @@
                     "utils_nextflow_pipeline": {
                         "branch": "master",
                         "git_sha": "c2b22d85f30a706a3073387f30380704fcae013b",
+                        "git_sha": "c2b22d85f30a706a3073387f30380704fcae013b",
                         "installed_by": ["subworkflows"]
                     },
                     "utils_nfcore_pipeline": {
@@ -141,6 +144,7 @@
                     },
                     "utils_nfschema_plugin": {
                         "branch": "master",
+                        "git_sha": "a7b27fd25bfa8dcc07d299e88bd790585901a436",
                         "git_sha": "a7b27fd25bfa8dcc07d299e88bd790585901a436",
                         "installed_by": ["subworkflows"]
                     }
