@@ -1,11 +1,11 @@
 #!/usr/bin/env nextflow
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    nf-core/fsptest
+    nf-core/fspassemblypipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/nf-core/fsptest
-    Website: https://nf-co.re/fsptest
-    Slack  : https://nfcore.slack.com/channels/fsptest
+    Github : https://github.com/nf-core/fspassemblypipeline
+    Website: https://nf-co.re/fspassemblypipeline
+    Slack  : https://nfcore.slack.com/channels/fspassemblypipeline
 ----------------------------------------------------------------------------------------
 */
 
@@ -15,9 +15,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { FSPTEST  } from './workflows/fsptest'
-include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_fsptest_pipeline'
-include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_fsptest_pipeline'
+include { FSPASSEMBLYPIPELINE  } from './workflows/fspassemblypipeline'
+include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_fspassemblypipeline_pipeline'
+include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_fspassemblypipeline_pipeline'
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     NAMED WORKFLOWS FOR PIPELINE
@@ -27,7 +27,7 @@ include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_fspt
 //
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
-workflow NFCORE_FSPTEST {
+workflow NFCORE_FSPASSEMBLYPIPELINE {
 
     take:
     samplesheet // channel: samplesheet read in from --input
@@ -37,11 +37,15 @@ workflow NFCORE_FSPTEST {
     //
     // WORKFLOW: Run pipeline
     //
-    FSPTEST (
-        samplesheet
+    FSPASSEMBLYPIPELINE (
+        samplesheet,
+        params.multiqc_config,
+        params.multiqc_logo,
+        params.multiqc_methods_description,
+        params.outdir,
     )
     emit:
-    multiqc_report = FSPTEST.out.multiqc_report // channel: /path/to/multiqc_report.html
+    multiqc_report = FSPASSEMBLYPIPELINE.out.multiqc_report // channel: /path/to/multiqc_report.html
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,7 +74,7 @@ workflow {
     //
     // WORKFLOW: Run main workflow
     //
-    NFCORE_FSPTEST (
+    NFCORE_FSPASSEMBLYPIPELINE (
         PIPELINE_INITIALISATION.out.samplesheet
     )
     //
@@ -82,8 +86,7 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
-        NFCORE_FSPTEST.out.multiqc_report
+        NFCORE_FSPASSEMBLYPIPELINE.out.multiqc_report
     )
 }
 
