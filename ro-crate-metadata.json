@@ -109,6 +109,7 @@
                 }
             ],
             "name": "nf-core/fspassemblypipeline"
+            "name": "nf-core/fspassemblypipeline"
         },
         {
             "@id": "ro-crate-metadata.json",
@@ -118,6 +119,7 @@
             },
             "conformsTo": [
                 {
+                    "@id": "https://w3id.org/ro/crate/1.2"
                     "@id": "https://w3id.org/ro/crate/1.2"
                 },
                 {
@@ -161,6 +163,7 @@
             ],
             "name": [
                 "nf-core/fspassemblypipeline"
+                "nf-core/fspassemblypipeline"
             ],
             "programmingLanguage": {
                 "@id": "https://w3id.org/workflowhub/workflow-ro-crate#nextflow"
@@ -171,8 +174,11 @@
             "url": [
                 "https://github.com/nf-core/fspassemblypipeline",
                 "https://nf-co.re/fspassemblypipeline/1.0.0/"
+                "https://github.com/nf-core/fspassemblypipeline",
+                "https://nf-co.re/fspassemblypipeline/1.0.0/"
             ],
             "version": [
+                "1.0.0"
                 "1.0.0"
             ]
         },
@@ -187,6 +193,7 @@
                 "@id": "https://www.nextflow.io/"
             },
             "version": "!>=25.10.4"
+            "version": "!>=25.10.4"
         },
         {
             "@id": "#140fdc1e-977e-482d-b2b3-37e4716e516c",
@@ -200,10 +207,13 @@
                 "@id": "main.nf"
             },
             "name": "Test suite for nf-core/fspassemblypipeline"
+            "name": "Test suite for nf-core/fspassemblypipeline"
         },
         {
             "@id": "#f49d5499-519c-41ad-8c35-1ae2ad3870a3",
             "@type": "TestInstance",
+            "name": "GitHub Actions workflow for testing nf-core/fspassemblypipeline",
+            "resource": "repos/nf-core/fspassemblypipeline/actions/workflows/nf-test.yml",
             "name": "GitHub Actions workflow for testing nf-core/fspassemblypipeline",
             "resource": "repos/nf-core/fspassemblypipeline/actions/workflows/nf-test.yml",
             "runsOn": {
