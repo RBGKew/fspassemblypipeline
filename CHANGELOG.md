@@ -89,7 +89,6 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 - 11/11/2026 - Updating all modules
 - 17/11/2026 - updating template to version 4.2.2
 
-
 ### `Dependencies`
 
 ### `Deprecated`
