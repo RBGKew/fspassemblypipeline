@@ -14,9 +14,7 @@ nf_core_version: 4.2.2
 repository_type: pipeline
 template:
   author: Lia Obinu, Niall Garvey, Wu Huang, Chris Wyatt, Fernando Duarte Frutos
-  description: Genome assembly pipeline for the Fungarium Sequencing Project, designed
-    to process and assemble genomes from Illumina short reads to be used for research
-    and biodiversity studies.
+  description: Genome assembly pipeline for the Fungarium Sequencing Project, designed to process and assemble genomes from Illumina short reads to be used for research and biodiversity studies.
   force: false
   is_nfcore: true
   name: fspassemblypipeline
@@ -25,4 +23,4 @@ template:
   skip_features:
     - igenomes
     - gpu
-  version: 1.0.0
+  version: 1.1.0
