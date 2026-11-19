@@ -176,7 +176,7 @@
                 },
                 "trace_report_suffix": {
                     "type": "string",
-                    "fa_icon": "far calendar",
+                    "fa_icon": "far fa-calendar",
                     "description": "Suffix to add to the trace report filename. Default is the date and time in the format yyyy-MM-dd_HH-mm-ss.",
                     "hidden": true
                 },
@@ -325,7 +325,8 @@
             "type": "string"
         },
         "busco_clean_intermediates": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": true
         },
         "busco_extra_args": {
             "type": "string",
@@ -452,6 +453,9 @@
         "min_contig_size": {
             "type": "integer",
             "default": 1000
+        },
+        "kmergenie_extra_args": {
+            "type": "string"
         }
     }
 }

@@ -70,7 +70,7 @@ df_fcs <- fcs %>%
     taxid_fcs = tax.id.1
   ) %>%
   mutate(
-    seq_id = as.character(seq_id),   
+    seq_id = as.character(seq_id),
     seq_len = as.numeric(seq_len),
     div1 = ifelse(
       is.na(div1) | div1 == "" | tolower(div1) %in% c("unassigned", "unknown"),
@@ -148,7 +148,7 @@ df_fcs_collapsed <- df_fcs %>%
 # ------------------------------
 df_tiara <- tiara %>%
   mutate(
-    seq_id = as.character(sequence_id), 
+    seq_id = as.character(sequence_id),
     domain_tiara = ifelse(
       class_fst_stage == "" | tolower(class_fst_stage) == "unknown",
       "unknown",

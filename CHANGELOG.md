@@ -1,10 +1,13 @@
 # nf-core/fspassemblypipeline: Changelog
 
+# nf-core/fspassemblypipeline: Changelog
+
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.0.0dev - [unreleased<!-- TODO nf-core: replace with date on release -->]
+## v1.0.0 - [unreleased<!-- TODO nf-core: replace with date on release -->]
 
+Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https://nf-co.re/) template.
 Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https://nf-co.re/) template.
 
 ### `Added`
@@ -50,6 +53,7 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 - 17/06/2026 - SELECT_BEST_ASSEMBLY_AND_QC now runs pypolca to improve the selected best assembly (error correction). The corrected assembly is then QCed using BUSCO, QUAST and Merqury, and bwa-mem2 and samtools are used to analyse the coverage. A coverage visualisation script is also run for rapid analysis.
 - 18/06/2026 - Added Masurca assembler.
 - 23/06/2026 - Added local module for spades using merged reads.
+- 30/10/2026 - Added module and script to extract metrics from the draft assemblies in a single tsv.
 
 ### `Fixed`
 
@@ -80,6 +84,10 @@ Initial release of nf-core/fspassemblypipeline, created with the [nf-core](https
 - 29/07/2026 - Change the hard coded k=17 to user specifid kmer size, the same with fastk.
 - 29/07/2026 - Updated citations.
 - 30/07/2026 - Updated nf-core TEMPLATE to nf-core 4.1.0
+- 03/09/2026 - changed r comparison script to read all contig headers as character, as some numerical contig headers would cause the merge later on to fail as it was a character and numeric merge
+- 15/10/2026 - Fix regex escape sequences in Perl version check
+- 11/11/2026 - Updating all modules
+- 17/11/2026 - updating template to version 4.2.2
 
 ### `Dependencies`
 
