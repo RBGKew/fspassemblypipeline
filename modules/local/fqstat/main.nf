@@ -12,7 +12,7 @@ process FQSTAT {
 
     output:
     tuple val(meta), path("${meta.id}*.stats"), emit: stats
-    tuple val("${task.process}"), val('perl'), eval("perl -v | grep -oP '\(v\K[0-9.]+'"), topic: versions, emit: versions_fqstat_summary
+    tuple val("${task.process}"), val('perl'), eval("perl -v | grep -oP '\\(v\\K[0-9.]+'"), topic: versions, emit: versions_fqstat_summary
 
     script:
     def fastq_file_list = fastq_files instanceof List ? fastq_files : [fastq_files]

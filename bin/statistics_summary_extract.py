@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-# Author: Wu Huang <w.huang@kew.org>
-# Date: 2026-03-11
-# Description: Extract key columns and classify k-mer peak shapes.
+"""Extract key columns and classify k-mer peak shapes."""
 
 import argparse
 import csv
@@ -51,25 +49,25 @@ def build_output_row(row):
     note = ""
 
     if peak1_fit_max < 60 and peak2_fit_max < 60:
-        shape = "L-shape"
+        shape = "L_shape"
         est_size = "NA"
         peak_position = "NA"
         note = "uncertain"
     elif peak_count == 0:
-        shape = "L-shape"
+        shape = "L_shape"
         est_size = "NA"
         peak_position = "NA"
     elif peak1_fit_max > peak2_fit_max:
-        shape = "sharp single peak"
+        shape = "sharp_single_peak"
         est_size = row.get("peak1_est_genome_size(len)", "")
         peak_position = row.get("peak1_kcov", "")
     elif peak_count == 2:
-        shape = "Double diploid peak"
+        shape = "Double_diploid_peak"
         est_size = row.get("peak2_est_genome_size(len)", "")
         peak_position = row.get("peak2_kcov", "")
         note = "uncertain"
     else:
-        shape = "sharp single peak"
+        shape = "sharp_single_peak"
         est_size = row.get("peak1_est_genome_size(len)", "")
         peak_position = row.get("peak1_kcov", "")
         note = "uncertain"
