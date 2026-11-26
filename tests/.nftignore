@@ -26,3 +26,10 @@ genome_assembly/quast/*/icarus_viewers/contig_size_viewer.html
 genome_assembly/quast/*/quast.log
 genome_assembly/quast/*/{report,transposed_report}.{html,pdf,tex}
 genome_assembly/quast/*/basic_stats/*.pdf
+preprocessing/fastp/**/*.fastp.{json,log}
+preprocessing/genescopefk/*/*/*_{model,summary}.txt
+preprocessing/genescopefk/*/*/*.png
+genome_assembly/R1R2/*/*/megahit/*.contigs.fa.gz
+genome_assembly/R1R2/*/*/megahit/intermediate_contigs/*.fa.gz
+genome_assembly/R1R2/*/*/merquryfk/megahit/*_megahit.qv
+genome_assembly/assemblies/*/*_megahit.fa.gz
