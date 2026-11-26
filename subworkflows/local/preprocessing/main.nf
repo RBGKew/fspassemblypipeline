@@ -74,7 +74,7 @@ workflow PREPROCESSING {
                     files.collect { txt -> [ 'merge', txt ] }
                 }
         )
-        .groupTuple(by: 0)
+        .groupTuple(by: 0, sort: { a, b -> a.name <=> b.name })
 
     FALCO_QCSTAT_COMPILING (
         ch_falco_qc_compiling_input
@@ -91,7 +91,7 @@ workflow PREPROCESSING {
     ch_fqstat_summary_input = FQSTAT.out.stats
         .map { meta, stats_file -> stats_file }
         .flatten()
-        .collect()
+        .collect(sort: { a, b -> a.name <=> b.name })
         .filter { it }
 
     FQSTAT_SUMMARY (
@@ -117,32 +117,32 @@ workflow PREPROCESSING {
 
     ch_fastk_hist_input = FASTK_HISTEX.out.hist
         .map { meta, hist -> hist }
-        .collect()
+        .collect(sort: { a, b -> a.name <=> b.name })
         .filter { it }
 
     ch_fastk_log_input = FASTK_FASTK.out.log
         .map { meta, log -> log }
-        .collect()
+        .collect(sort: { a, b -> a.name <=> b.name })
         .filter { it }
 
     ch_genescopefk_p1_summary_input = GENESCOPEFK_P1.out.summary
         .map { meta, summary -> summary }
-        .collect()
+        .collect(sort: { a, b -> a.name <=> b.name })
         .filter { it }
 
     ch_genescopefk_p2_summary_input = GENESCOPEFK_P2.out.summary
         .map { meta, summary -> summary }
-        .collect()
+        .collect(sort: { a, b -> a.name <=> b.name })
         .filter { it }
 
     ch_genescopefk_p1_log_input = GENESCOPEFK_P1.out.log
         .map { meta, log -> log }
-        .collect()
+        .collect(sort: { a, b -> a.name <=> b.name })
         .filter { it }
 
     ch_genescopefk_p2_log_input = GENESCOPEFK_P2.out.log
         .map { meta, log -> log }
-        .collect()
+        .collect(sort: { a, b -> a.name <=> b.name })
         .filter { it }
 
     KMER_STAT_SUMMARY (

@@ -108,7 +108,7 @@ workflow SELECT_BEST_ASSEMBLY_AND_QC {
     // ch_draft_assemblies_mapped_to_id is: [ sample_id, meta, assembly ]
     // groupTuple(by: 0) groups by position 0 (sample_id)
     // Result: [ sample_id, [meta1, meta2, meta3], [assembly1, assembly2, assembly3] ]
-    def ch_quast_input = ch_draft_assemblies_mapped_to_id.groupTuple( by: 0 ).map { sample_id, metas, assemblies -> [ [id: sample_id], assemblies ]}
+    def ch_quast_input = ch_draft_assemblies_mapped_to_id.groupTuple( by: 0 ).map { sample_id, metas, assemblies -> [ [id: sample_id], assemblies.sort { a, b -> a.name <=> b.name } ]}
 
     QUAST ( ch_quast_input,[[],[]], [[],[]] ) // no reference fasta or gff for quast
 
@@ -143,7 +143,7 @@ workflow SELECT_BEST_ASSEMBLY_AND_QC {
     // Group BUSCO summaries per sample
     def ch_busco_per_sample = BUSCO_SPECIFIC.out.short_summaries_txt
         .map { meta, summary -> [ meta.id, summary ] }
-        .groupTuple(by: 0)
+        .groupTuple(by: 0, sort: { a, b -> a.name <=> b.name })
     // [ sample_id, [summary1, summary2, ...] ]
 
     // QUAST.out.tsv already emits [ [id: sample_id], tsv ]
@@ -155,7 +155,7 @@ workflow SELECT_BEST_ASSEMBLY_AND_QC {
     // Group assemblies per sample
     def ch_assemblies_per_sample = RENAME_ASSEMBLIES.out.renamed_assemblies
         .map { meta, asm -> [ meta.id, asm ] }
-        .groupTuple(by: 0)
+        .groupTuple(by: 0, sort: { a, b -> a.name <=> b.name })
     // [ sample_id, [asm1, asm2, ...] ]
 
 
