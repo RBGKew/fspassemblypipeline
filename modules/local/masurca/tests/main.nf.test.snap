@@ -1,0 +1,156 @@
+{
+    "genomeassembler - hybrid - illumina_pacbio": {
+        "content": [
+            "test.scaffolds.fa.gz",
+            "assemble.sh",
+            "test_masurca_config.txt",
+            "test-masurca.log",
+            {
+                "versions_masurca": [
+                    [
+                        "MASURCA",
+                        "masurca",
+                        "4.1.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-27T12:08:37.077561",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "homo_sapiens - illumina - single_end": {
+        "content": [
+            "test.scaffolds.fa.gz",
+            "assemble.sh",
+            "test_masurca_config.txt",
+            "test-masurca.log",
+            {
+                "versions_masurca": [
+                    [
+                        "MASURCA",
+                        "masurca",
+                        "4.1.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-27T11:35:41.276965",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "homo_sapiens - illumina - paired_end": {
+        "content": [
+            "test.scaffolds.fa.gz",
+            "assemble.sh",
+            "test_masurca_config.txt",
+            "test-masurca.log",
+            {
+                "versions_masurca": [
+                    [
+                        "MASURCA",
+                        "masurca",
+                        "4.1.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-27T11:37:14.91057",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "genomeassembler - hybrid - illumina_pacbio_nanopore": {
+        "content": [
+            "test.scaffolds.fa.gz",
+            "assemble.sh",
+            "test_masurca_config.txt",
+            "test-masurca.log",
+            {
+                "versions_masurca": [
+                    [
+                        "MASURCA",
+                        "masurca",
+                        "4.1.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-27T12:13:05.054465",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "homo_sapiens - illumina - paired_end - with_jump": {
+        "content": [
+            "test.scaffolds.fa.gz",
+            "assemble.sh",
+            "test_masurca_config.txt",
+            "test-masurca.log",
+            {
+                "versions_masurca": [
+                    [
+                        "MASURCA",
+                        "masurca",
+                        "4.1.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-27T11:44:06.345814",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "genomeassembler - hybrid - illumina_nanopore": {
+        "content": [
+            "test.scaffolds.fa.gz",
+            "assemble.sh",
+            "test_masurca_config.txt",
+            "test-masurca.log",
+            {
+                "versions_masurca": [
+                    [
+                        "MASURCA",
+                        "masurca",
+                        "4.1.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-27T12:10:29.115916",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "sarscov2 - illumina - paired_end - stub": {
+        "content": [
+            "test.scaffolds.fa.gz",
+            "assemble.sh",
+            "test_masurca_config.txt",
+            "test-masurca.log",
+            {
+                "versions_masurca": [
+                    [
+                        "MASURCA",
+                        "masurca",
+                        "4.1.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-27T12:27:29.117742",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    }
+}
